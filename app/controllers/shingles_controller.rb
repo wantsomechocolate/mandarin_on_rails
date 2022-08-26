@@ -1,0 +1,2 @@
+class ShinglesController < ApplicationController
+end

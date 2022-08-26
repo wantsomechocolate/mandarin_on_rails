@@ -1,0 +1,72 @@
+<section class="wrapper style1 align-left input-text-show-section">
+	<div class="inner">
+
+		<div>
+			<h1>Input Text View</h1>
+		</div>
+		<div>
+			<p>Use the sorting, filtering, and searching capabilities to filter out words that are not useful to you. Export remaining words in desired format (all export options will listen to the active filters). The Pleco button will export a text file that can be directly imported to Pleco.</p>
+		</div>
+		
+	  <div class="input-text-show-container">
+		<div class="input-text-show-title-container">
+			<% if @input_text.avatar.attached? %>
+			<img class = "input-text-show-img" src="<%= (url_for(@input_text.avatar))%>"/>
+			<% end %>
+
+			<h2 id = "input-text-title" class = "input-text-show-title"><%= @input_text.title %></h2>
+		</div>
+
+		<br>
+		  <div class = "input-text-show-body-container">
+		    <p class = "input-text-show-body" ><%= @input_text.body %></p>
+		  </div>
+	  </div>
+
+	  <div class="table-wrapper" >
+		<table id="my-table" class="alt">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Word</th>
+					<th>Count</th>
+					<th>Frequency</th>
+					<th>HSK</th>
+					<th>Type</th>
+
+				</tr>
+			</thead>
+			<tbody id="token-table">
+					<%= render @input_text.shingles %>
+			</tbody>
+		</table>
+	  </div>
+
+	  	<div>
+		  	<div>
+		      <%= link_to "Edit", edit_input_text_path(@input_text), class: "button fit primary" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "Delete", input_text_path(@input_text), data: {
+		      	turbo:true,
+		    	turbo_method: :delete,
+		    	turbo_confirm: "Are you sure?"
+		    	}, class: "button fit primary danger" %> 
+			</div>
+
+			<div>
+		      <%= link_to "New", new_input_text_path, class: "button fit" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "My Texts", input_texts_path, class: "button fit" %>
+		  	</div>
+	  	</div>
+
+	</div>
+
+</section> 
+
+
+

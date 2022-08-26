@@ -1,0 +1,22 @@
+<section class = "wrapper style1 align-left input-text-new-section">
+
+	<div class = "inner">
+	
+		
+		<% if current_or_guest_user.input_texts.any? %>
+			<h1>New Input Text</h1>
+			<h3>Paste or type some simplified chinese text below and then hit the process button</h3>
+		<% else %>
+			<h1>Welcome!</h1>
+			<h3>Paste or type some simplified chinese text below and then hit the process button to get started</h3>
+		<% end %>
+
+		<%= render partial: "form", locals: {input_text: @input_text, action: "new"} %>
+
+		<% if current_or_guest_user.input_texts.any? %>
+			<%= link_to "My Texts", input_texts_path, class: "button fit" %>
+		<% end %>
+
+	</div>
+
+</section>

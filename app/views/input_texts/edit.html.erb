@@ -1,0 +1,17 @@
+<section class="wrapper style1 align-left input-text-edit-section">
+	<div class="inner">
+
+		<h1> Edit Input Text</h1>
+
+		<div>
+		<%= render partial: "form", locals: {input_text: @input_text, action: "edit"} %>
+		</div>
+		<div>
+		<%= link_to "View", input_text_path(@input_text), class: "button fit" %>
+		</div>
+		<div>
+		<%= link_to "My Texts", input_texts_path, class: "button fit" %>
+		</div>
+	</div>
+
+</section>

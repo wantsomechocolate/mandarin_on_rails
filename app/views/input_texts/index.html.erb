@@ -1,0 +1,70 @@
+<section class="wrapper style1 align-left input-text-index-section">
+	<div class="inner">
+
+		<div>
+			<h1>My Segmentations</h1>
+		</div>
+		
+		<div>
+			<h2>View, Edit, or Create New</h2>
+		</div>
+		<br>
+		<div>
+			<% if @input_texts.any? %>
+				<table id = "my-input-texts" class="alt">
+					<thead>
+						<tr>
+							<th> Icon </th>
+							<th> Name </th>
+							<th> Created </th>
+							<th> Modified </th>
+							<th> View </th>
+							<th> Edit </th>
+						</tr>
+					</thead>
+					<tbody>
+					 
+						<% @input_texts.each do |input_text| %>
+						<tr>
+							<td>
+							<% if input_text.avatar.attached? %>
+				        		<img src="<%= (url_for(input_text.avatar))%>"/>
+				      		<% end %>
+				      		</td>
+
+				      		<td>
+				      			<%= input_text.title %>
+				      		</td>
+
+				      		<td>
+				      			<%= input_text.created_at %>
+				      		</td>
+
+				      		<td>
+				      			<%= input_text.updated_at %>
+				      		</td>
+
+				      		<td>
+								<%= link_to "", input_text_path(input_text), class: "button small no-box-shadow icon fas fa-eye" %>
+				      		</td>
+
+				      		<td>
+								<%= link_to "", edit_input_text_path(input_text), class: "button small no-box-shadow icon fas fa-edit" %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>	
+			<% else %>
+				<p>You don't have any segmentations yet!</p>
+			<% end %>
+		</div>
+		<br>
+		<div>
+			<div>
+				<%= link_to "Create New", new_input_text_path, class: "button fit primary" %>
+			</div>
+		</div>
+	</div>
+
+</section>

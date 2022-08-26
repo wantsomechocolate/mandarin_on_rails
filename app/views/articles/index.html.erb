@@ -1,0 +1,116 @@
+
+<section>
+
+	<h1> Welcome! </h1>
+	<h3>Paste or type some simplified chinese text below and then hit the process button to get started</h3>
+
+<!-- 	<form method="post" action="#"> -->
+		<div class="row gtr-uniform">
+			<!-- Break -->
+			<div class="col-12">
+				<textarea name="passage" id="passage" placeholder="..." rows="10"></textarea>
+			</div>
+			<!-- Break -->
+			<div class="col-12">
+				<ul class="actions">
+					<li><a id="process" class="button primary">Process</a></li>
+					<!-- <li><input value="Process" class="primary" id="process"/></li> --> <!-- type="submit" -->
+				</ul>
+			</div>
+		</div>
+<!-- 	</form> -->
+
+
+
+</section>
+
+
+<section>
+
+	<h4>Word List</h4>
+	<div class="table-wrapper">
+		<table id="my-table" class="alt">
+			<thead>
+				<tr>
+					<th>Index</th>
+					<th>Word</th>
+					<th>Count</th>
+					<th>Frequency</th>
+					<th>HSK</th>
+					<th>Type</th>
+
+				</tr>
+			</thead>
+			<tbody id="token-table">
+				<tr>
+					<td>Nothing Yet!</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+
+				</tr>
+<!-- 				<tr>
+					<td>1</td>
+					<td>我</td>
+					<td>21</td>
+					<td>18.95</td>
+					<td>1</td>
+					<td>Trie</td>
+					<td>True</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>take away your fake love</td>
+					<td>2</td>
+					<td>-</td>
+					<td>-</td>
+					<td>Unknown</td>
+					<td>True</td>
+				</tr> -->
+
+			</tbody>
+<!-- 			<tfoot>
+				<tr>
+					<td colspan="2"></td>
+					<td>100.00</td>
+				</tr>
+			</tfoot> -->
+		</table>
+	</div>
+
+</section>
+
+
+
+
+
+
+<section>
+
+</section>
+	<h2>Or browse some public segmentations</h2>
+
+<section>
+	<h1>Articles</h1>
+
+	Our blog has <%= Article.public_count %> articles and counting!
+
+	<ul>
+		<% @articles.each do |article| %>
+		  <% unless article.archived? %>
+			<li>
+				<!-- link to takes link text and then article -->
+				<!-- article has a get route that maps to /articles/:id -->
+				<!-- so link_to knows to call the article_path helper -->
+				<!-- the article_path helper knows to fetch the ID for use in the link, because that's what the route says to do -->
+				<%= link_to article.title, article %>
+			</li>
+		  <% end %>
+		<% end %>
+	</ul>
+
+
+	<%= link_to "New Article", new_article_path %>
+</section>

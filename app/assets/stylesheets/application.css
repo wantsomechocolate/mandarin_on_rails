@@ -1,0 +1,462 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/*###############################################################################################*/
+/*DATATABLES CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.table-wrapper{
+    width: 100%;
+    overflow: hidden;
+}
+
+
+select[name="my-table_length"],
+select[name="my-input-texts_length"]{
+    text-align: center;
+}
+
+.dataTables_filter label input{
+    margin-left: 0 !important;
+}
+
+
+select{
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+table#my-table,
+table#my-input-texts {
+    width: 100% !important;
+}
+
+
+table th,
+table td{
+    text-align: center !important;
+}
+
+
+.dataTables_info,
+.dataTables_paginate,
+.paginate_button {
+    color: #777 !important;
+}
+
+
+a.paginate_button:hover{
+    color: #777 !important;
+}
+
+
+/*
+.dtsp-clearAll,
+.dtsp-showAll,
+.dtsp-collapseAll {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+*/
+
+
+button.dt-button{
+    min-width: 7em;
+}
+
+.dataTables_paginate{
+    padding-bottom: 1em;
+}
+
+
+.dtsp-searchPanes > div{
+    width: 100%;
+    min-width: 10em !important;
+    max-width: none !important;
+    flex-grow: unset !important;
+    flex-shrink: unset !important;
+}
+
+.dtsp-titleRow button{
+    line-height: 0;
+}
+
+
+.dtsp-titleRow button{
+    min-width: 12em;
+}
+
+
+button.dtsp-paneButton{
+    line-height: 3em;
+    height: 3em !important;
+    letter-spacing: 0px;
+    font-size: large;
+}
+
+        @media screen and (max-width: 736px) {
+            button.dtsp-paneButton {
+                line-height: 0px;
+                letter-spacing: 0px;
+                font-size: xx-small;
+            }
+
+            .dtsp-titleRow button{
+                min-width: 100%;
+            }
+
+        }
+
+
+
+
+
+
+
+/*###############################################################################################*/
+/*DEVISE CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.devise-form label{
+    margin: 2em 0 0 0;
+}
+
+.devise-form img{
+    height:  10em;
+}
+
+
+
+/*###############################################################################################*/
+/*INDEX CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.input-text-index-section img{
+    height: 5em;
+    /*margin-right: 1em;*/
+}
+
+.input-text-index-section > div > * {
+    display: inline;
+}
+
+
+/*###############################################################################################*/
+/*EDIT CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.input-text-edit-section img{
+    height: 10em;
+}
+
+.input-text-edit-section input[type="checkbox"]{
+    appearance:  auto !important;
+    opacity: 1;
+}
+
+.input-text-edit-section p{
+    margin: 0;
+}
+
+
+/*###############################################################################################*/
+/*SHOW CUSTOMIZATION*/
+/*###############################################################################################*/
+
+
+
+.input-text-show-section img{
+    margin-right: 1em;
+}
+
+.input-text-show-section h1{
+    margin: 0;
+}
+
+
+.input-text-show-title-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 90%;
+  height: 5em;
+  /*text-align: center;*/
+  /* this does align h1 if h1 is wider than its containing text */
+}
+
+.input-text-show-title-container>h1 {
+  flex: 1; /* this makes the h1 take all available width in its containing div, and makes text-align: center property work inside section1 */
+  align-self: center /* this is finally the property that vertically aligns the h1 title inside its containing div */
+}
+
+p.input-text-show-body{
+    max-height: 10em;
+    overflow-y: auto;
+}
+
+
+
+/*###############################################################################################*/
+/*FORM CUSTOMIZATION*/
+/*###############################################################################################*/
+
+input[type="datetime-local"] {
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: rgba(212, 212, 255, 0.035);
+    border: none;
+    border-radius: 0;
+    color: inherit;
+    display: block;
+    outline: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    width: 100%;
+    
+}
+
+    input[type="datetime-local"]:invalid {
+            box-shadow: none;
+        }
+
+    input[type="datetime-local"]:focus {
+            border-color: #9bf1ff;
+            box-shadow: 0 0 0 2px #9bf1ff;
+        }
+
+
+
+.no-box-shadow{
+    box-shadow: none;
+}
+
+
+
+
+
+.input-text-new-section form,
+.input-text-edit-section form{
+    margin-bottom: 0;
+}
+
+.input-text-new-section input[type="submit"],
+.input-text-edit-section input[type="submit"]{
+    margin-bottom: 0.65em;
+}
+
+.input-text-new-section form[type="file"]
+.input-text-edit-section input[type="file"]{
+
+}
+
+
+input::file-selector-button {
+
+}
+
+
+
+/* Button */
+
+input::file-selector-button {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+        -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+        -ms-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+        border: 0;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 400;
+        letter-spacing: 0.125em;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        max-width: 20rem;
+        height: 3.75em;
+        line-height: 3.75em;
+        border-radius: 3.75em;
+        padding: 0 2.5em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+input::file-selector-button:before {
+            margin-right: 0.5rem;
+        }
+
+input::file-selector-button.fit {
+            width: 100%;
+        }
+
+input::file-selector-button.small {
+            font-size: 0.6rem;
+            height: 3.325em;
+            line-height: 3.325em;
+            border-radius: 3.325em;
+            padding: 0 2em;
+        }
+
+input::file-selector-button.large {
+            font-size: 0.8rem;
+            height: 4em;
+            line-height: 4em;
+            border-radius: 4em;
+            padding: 0 3em;
+        }
+
+input::file-selector-button.wide {
+            min-width: 14em;
+        }
+
+input::file-selector-button:disabled {
+            pointer-events: none;
+            opacity: 0.25;
+        }
+
+input::file-selector-button {
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+        color: #000000 !important;
+    }
+
+input::file-selector-button:hover {
+            box-shadow: inset 0 0 0 1px #47D3E5;
+            color: #47D3E5 !important;
+        }
+
+input::file-selector-button:active {
+            background-color: rgba(71, 211, 229, 0.2);
+            box-shadow: inset 0 0 0 1px #47D3E5;
+            color: #47D3E5 !important;
+        }
+
+input::file-selector-button.primary {
+            background-color: #000000;
+            box-shadow: none;
+            color: #ffffff !important;
+        }
+
+input::file-selector-button.primary:hover {
+                background-color: #47D3E5;
+            }
+
+input::file-selector-button.primary:active {
+                background-color: #1ebdd1;
+            }
+
+
+
+
+select{
+    background-image: url(none);
+}
+
+.input-text-show-container h1, h2, h3, h4, h5, h6{
+    vertical-align: middle;
+    margin: auto 0;
+}
+
+.input-text-index-section .button.icon:before{
+    margin-right: 0 !important;
+}
+
+
+.button.danger{
+    background-color: #dc3545;
+}
+
+.button.danger:hover{
+    background-color: #c82333;
+}
+
+
+
+
+        @media screen and (max-width: 736px) {
+
+            .button.fit {
+                max-width: none;
+            }
+
+        }
+
+        @media screen and (max-width: 360px) {
+
+            .button.fit {
+                max-width: none;
+            }
+
+
+        }
+
+
+
+input[type="checkbox"]{
+    border-radius: 4px;
+    border: solid 1px;
+    content: '';
+    display: inline-block;
+    font-size: 0.8rem;
+    height: 1.65rem;
+    left: 0;
+    line-height: 1.65rem;
+    text-align: center;
+    top: 0;
+    width: 1.65rem;
+}
+
+
+form p{
+    font-style: italic;
+}
+
+
+.devise-customization label{
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+td{
+    vertical-align: middle;
+}
+
+.input-text-show-title-container{
+    height: fit-content;
+}
+
+.input-text-show-title-container img{
+    height: 5em;
+}
