@@ -6,6 +6,9 @@ class InputTextsController < ApplicationController
 	include Segmentor
 	include Util
 
+
+	load_and_authorize_resource
+
 	def index
 		@input_texts = current_or_guest_user.input_texts
 

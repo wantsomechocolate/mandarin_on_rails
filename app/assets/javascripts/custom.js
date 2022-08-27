@@ -1,6 +1,17 @@
 $(document).ready(function() {
 	/*alert("heu")*/
     $('#my-table').DataTable({
+
+
+        /*
+        ajax: {
+                url: '/update_token_table',
+                type: 'POST',
+                data: {"text":data},
+                dataSrc: ''
+                },
+        */
+
         dom: 'RlfrtipPB',
         searchPane:true,
         searchPanes:{
@@ -26,6 +37,22 @@ $(document).ready(function() {
             { name: 'type' },
         ],
 
+        /*columns: [
+            { data: 'index' },
+            { data: 'word' },
+            { data: 'count' },
+            { data: 'freq' },
+            { data: 'hsk' },
+            { data: 'type' },
+            ],
+        */
+
+        // order: [[0,'asc']],
+        // order: [[2,'desc'],[ 3, 'desc' ]],
+
+        // destroy: true,
+        // scrollX: true,
+        // stateSave: true,        
 
 	    language: {
 	        search: "_INPUT_",

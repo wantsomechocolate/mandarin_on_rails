@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :tokens
 
-  post "/update_token_table", to: "tokens#update_token_table"
+  #post "/update_token_table", to: "tokens#update_token_table"
 
   resources :input_texts do
     resources :shingles
