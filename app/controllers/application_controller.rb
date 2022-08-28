@@ -1,9 +1,16 @@
+#require Rails.root.join('lib','current_or_guest_user')
+
 class ApplicationController < ActionController::Base
 
+  #include CurrentOrGuestUser
+
   protect_from_forgery
+  check_authorization unless: :devise_controller?
 
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  before_action :set_current_user
 
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
@@ -51,8 +58,29 @@ class ApplicationController < ActionController::Base
   end
 
 
+=begin
+  rescue_from CanCan::AccessDenied do |exception|
+    if current_user.nil?
+      puts "current user was nil"
+      #session[:next] = request.fullpath
+      #redirect_to login_url, alert: 'You have to log in to continue.'
+    else
+      puts "current_user_was not nil"
+      #respond_to do |format|
+      #  format.json { render nothing: true, status: :not_found }
+      #  format.html { redirect_to main_app.root_url, alert: exception.message }
+      #  format.js   { render nothing: true, status: :not_found }
+      #end
+    end
+  end
+=end
 
- 
+  private
+  def set_current_user
+    Current.user = current_or_guest_user
+  end
+
+
   protected
 
   def configure_permitted_parameters

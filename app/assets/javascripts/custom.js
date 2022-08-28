@@ -232,6 +232,8 @@ $(document).ready(function() {
 
 		scrollX: true,
 
+        order: [[2,'desc']],
+
 	})
 
 
