@@ -1,17 +1,22 @@
-<section class="wrapper style1 align-center">
-	<div class="inner">
-		<%=image_tag("pleco.jpg")%>
-
-	    <p>There is a custom export button that supports </p>
-	    
+<section class="wrapper style1 align-left">
+	<div class="inner" id="create_word_list">
+		<h2>Creating a Word List</h2>
+	    <p>This is very simple, just get your input text ready in your clipboard, and go <a href="/input_texts/new">here</a>. </p>
 	</div>
 </section>
 
-<section class="wrapper style1 align-center">
-	<div class="inner">
-		<%=image_tag("pleco.jpg")%>
+<section class="wrapper style1 align-left color5">
+	<div class="inner" id="modify_word_list">
+		<h2>Modifying a Word List</h2>
+	    <p>I'm using <a href="https://datatables.net/">DataTables</a> to display the word list generated from an input text. There are a ton of filtering and sorting options available to you above the actual table. Personally, I do something like this. I look at all the unknown words first to see if there is anything interesting in there. Then I will look at any tokens (remember that these are repeated sequences of characters that were not found in the dictionary). And finally I'll typically only include HSK levels 4,5,6, and -1 (no HSK designation) and actual dictionary words in my final export.</p>
+	</div>
+</section>
 
-	    <p>There is a custom export button that supports </p>
+<section class="wrapper style1 align-left">
+	<div class="inner" id="export_word_list">
+		<h2>Exporting a Word List</h2>
 
+	    <p>At the bottom of the filtering options are a few buttons to use for exporting. Pretty much the only one I use is the Pleco button. It will export a csv file that can be directly imported into Pleco. See the Pleco section of the <a href="/resources#pleco">resources</a> page for the settings I use when importing flashcards using these files. The Pleco button will only export the actual words, the rest of the export options will include all columns. All of the export buttons listen to the active filters.</p>
+	    
 	</div>
 </section>

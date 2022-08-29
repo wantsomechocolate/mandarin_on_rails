@@ -1,17 +1,69 @@
-<section class="wrapper style1 align-center">
-	<div class="inner">
-		<h2>Segmentation</h2>
+<section class="wrapper style1 align-left">
+	<div class="inner" id="goal">
+		<h2>The Goal</h2>
+	    <p>Split a given Chinese text into words and phrases in order to produce a targeted vocabulary list for that text. <a href="/input_texts/new">Give it a try</a>.</p>
+	</div>
+</section>
 
-	    <p>There is a custom export button that supports </p>
+<section class="wrapper style1 align-left color5">
+	<div class="inner" id="why">
+		<h2>But Like.... Why, Though?</h2>
+		<h3>AKA Aren't there already online tools that do this?</h3>
+	    <p>There definitely are, but this project was actually mostly a way to learn Ruby and secondarily to facilitate reading Chinese texts. And although there exist some tools that do this already, I feel the functionality of this one is not an exact copy of the tools I've already seen.</p>
+	</div>
+</section>
+
+<section class="wrapper style1 align-left">
+	<div class="inner" id="trad_to_simp">
+		<h2>Traditional vs Simplified</h2>
+
+	    <p>None of the existing ruby gems I found to do the conversion for me between simplified and traditional chinese were 100% accurate, so I originally had a lofty goal of including my own S-T and T-S Chinese converter as part of this project. But soon I was so far down the rabbit hole I decided it was time to head back to the surface. It turns out it's much more context-specific than I originally thought and that the conversion is often one-to-many in both directions. Check out the <a href="/resources">resources</a> page for the source I used to fuel my initial efforts. </p>
 	    
 	</div>
 </section>
 
-<section class="wrapper style1 align-center">
-	<div class="inner">
-		<h2>Tokenization</h2>
+<section class="wrapper style1 align-left color5">
+	<div class="inner" id="algorithm">
+		<h2>The Algorithm</h2>
 
-	    <p>There is a custom export button that supports </p>
+	    <p>I decided to use an algorithm called full segmentation in order to find dictionary words, and another algorthm for tokenization in order to find repeated sequences of characters that might not appear in the dictionary (like a transliterated name, for example). The output of both of those algorithms are known as shingles because they can overlap with one another, like shingles on a roof.</p>
+
+	    <h3 id="full_segmentation">Full Segmentation</h3>
+
+		<p>Each index of the input text is used as a starting point and the longest word with that starting point that appears in the word list is added to the output IF it "pushes passed" the current right most index reached by any previous words that have started at earlier indices. For example, assume 小红帽 and 红帽 are both in the word list, if 小红帽 is found, then on the next iteration, 红帽 would not be added because they end on the same index in the input text. But if 红帽 is encountered later on in the text without 小 in front of it, then it will also be added to the output.</p>
+		<p>If a character does not lead to any words in the word list it is added to a running list of unknown characters that is then added to the output once the next known word is found or the end of the text is reached. For example, if the input is "我是一个red的苹果", red will be pulled out as a single unknown word. I prefer this to completely removing it from the output or having the output contain 'r','e',and 'd', separately. </p>
+		<p>There is a small list of default stop words for this algorithm (《》：，) that will automatically end the current segmentation. The default ones I chose were useful while segmenting song lyrics. These will eventually be user configurable. </p>
+
+
+		<h3 id="tokenization">Tokenization</h3>
+		<p>This algorithm is meant to find repeated sequences of characters that do not appear in the word list. I want to redo this algorithm, but this is how it works right now:</p>
+		<p>Loop through each character of the input_text. For each starting character, loop from 1 to max_token_length. This will produce tokens starting from length 1 and ending at max_token_length. If a token/substring is NOT in the dictionary, add it to the output or increment it's count if it is already present in the output. If a stopword is encountered, immediatly stop looping towards max_token_length and go to the next starting character of the input_text. The stopwords for this algorithm are much more extensive than for the full segmentation algorithm.</p>
+		<p>Once all tokens are acquired, go through and remove any tokens that only exist as part of larger tokens with the same count. For example, if you have both {"大石头"， 5} and {"石头", 5} in the output, then 石头 will be removed because it only ever appears in the text as part of the longer string 大石头. Finally, remove any tokens that are shorter than the minimum token length, and remove any tokens that appear less times than the minimum token count. These parameters will also eventually be user configurable.</p>
+		<p>I feel this algorithm can be improved by not having to arbitrarily bound the max token length. For example if there is a token found of max length, it's possible that all occurances of that token are flanked by the same characters, but because I also wish to remove tokens that only appear as subsets of larger tokens, I still need to figure out how I want to accomplish this. </p>
+
+		<h3 id="result">Result</h3>
+		<p>As stated above, the result of the above processes both produce shingles. It will also, however, not be garunteed to return all actual words present in the text, even if all of the words actually are present in the dictionary. This is because I am always looking for the longest dictionary word that starts at a given index. Below is an example:</p>
+
+		<p>Say "大风车" is the input, this most likely is referring to a large (大） windmill (风车). But 大风 is actually a word in the word list that means "strong wind". Because 大风 is a word and this algorithm is always trying to find the longest match at every index, 大 will not be added to the output, instead, 大风 and 风车 will be added. I could look at word frequencies to determine which combination is more likely, but I actually prefer to incidentally learn some new words in exchange for having a few potential holes in my output list.</p>
+
+
+	</div>
+</section>
+
+<section class="wrapper style1 align-left">
+	<div class="inner" id="future">
+		<h2>Thoughts/ Future Work</h2>
+
+	    <p>Below are some things I'd like to add in the future.</p>
+
+	    <h3>Parameter Customization</h3>
+	    <p>Right now the user can not adjust the stopwords used for each algorthm, or any other parameters such as max and min token length, or minimum token count.</p>
+
+	    <h3>Results Customization</h3>
+	    <p>I want the ability to mark known words as known so that they are filtered out of the output by default. At least the ability to automatically filter out certain HSK levels would also be nice.</p>
+
+	   	<h3>Estimate Difficulty Level of Input Texts</h3>
+	    <p>I originally thought I would be able to use the HSK word lists combined with the word frequency data in order to estimate the difficulty/level of every word in a text and then use that to estimate the difficulty of reading the entire text, but it turns out that HSK words span across huge, overlapping ranges of word frequencies, so words in a very large range can actually "belong" to any HSK level. I'm sure there is a way to accomplish this task, but It gets dumped in future work for now. I also want to take a look at estimating the difficulty that the specific user would have with a text, based on their known words, but I need to implement a known words feature first. </p>
 
 	</div>
 </section>

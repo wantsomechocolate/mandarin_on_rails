@@ -989,3 +989,25 @@ nav p,
 nav p strong{
     color: white;
 }
+
+header span{
+    overflow: hidden;
+}
+
+.resources img{
+    max-width: 20em;
+}
+
+tr {
+    height: 50px
+}
+
+td {
+    white-space: nowrap;
+}
+
+/* I thought I was on to something, but this only works when showing 10 items.
+table#my-table{
+    min-height: 500px;
+}
+*/

@@ -1,17 +1,30 @@
-<section class="wrapper style1 align-center">
-	<div class="inner">
-		<%=image_tag("bcc.jpg")%>
-		<h2>Word Frequencies</h2>
-	    <p>I got the word frequencies from <a href = "#">this</a> Pleco forum thread, but they ultimately came from ....</p>
-	    
+<section class="wrapper style1 align-left resources">
+	<div class="inner" id="pleco">
+		<!-- <h2>Pleco</h2> -->
+		<%=image_tag("pleco.jpg")%>
+	    <p>Without <a href="https://www.pleco.com/">Pleco</a>, this tool would be fairly useless because it does not provide pronunciations or definitions. Both of those, however, can be supplied by Pleco on import. Feel free to read through the Pleco documentation to determine which import settings work best for you. I have included a screenshot of the settings that I use below (Android), which allow me to supply Pleco essentially just a list of words. Pleco will then supply the pronunciation and definition (if it has one). There are times I manually add definitions (for example, translated song lyrics, where each line of the song is a flashcard), but I still want Pleco to provide the pronunciation. To accomplish this, simply put two tabs between the word and the definition, this is essentially leaving the pronunciation field blank in the import file. </p>
+	    <%=image_tag("pleco_settings.png")%>
+
 	</div>
 </section>
 
-<section class="wrapper style1 align-center">
-	<div class="inner">
-		<%=image_tag("hsk.jpg")%>
-		<h2>HSK Word Lists</h2>
-	    <p>I used the 2012 HSK word lists that still only have 6 levels. The words lists came from <a href = "#">here</a></p>
-	    
+<section class="wrapper style1 align-left resources color5">
+	<div class="inner" id="why">
+		<h2>Useful Links</h2>
+
+		<h3><a href="https://www.plecoforums.com/threads/word-frequency-list-based-on-a-15-billion-character-corpus-bcc-blcu-chinese-corpus.5859/">15 Billion Character Corpus</a></h3>
+
+		<h3><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.28.7587&rep=rep1&type=pdf">On the Use of Words and N-grams for Chinese Information Retrieval</a></h3>
+
+		<h3><a href="https://github.com/stopwords-iso/stopwords-zh">Inspiration for Stop Words</a></h3>
+
+		<h3><a href="https://zh.wikisource.org/wiki/%E9%80%9A%E7%94%A8%E8%A7%84%E8%8C%83%E6%B1%89%E5%AD%97%E8%A1%A8">Chinese Character Conversion</a></h3>
+
+		<h3><a href="https://lingua.mtsu.edu/chinese-computing/statistics/char/list.php?Which=MO">One Hundred Thousand Most Frequent Chinese Words</a></h3>
+
+		<h3><a href="http://www.chinesetest.cn/godownload.do">HSK Word Lists</a></h3><p>Look for "新汉语水平考试（HSK）词汇（2012年修订版）"</p>
+
 	</div>
 </section>
+
+

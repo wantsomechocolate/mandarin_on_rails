@@ -12,7 +12,7 @@ $(document).ready(function() {
                 },
         */
 
-        dom: 'RlfrtipPB',
+        dom: 'RPlfrtipB',
         searchPane:true,
         searchPanes:{
 			cascadePanes: true,
@@ -25,6 +25,12 @@ $(document).ready(function() {
             }
 
 
+        },
+
+        order: [[1,'asc']],
+
+        fixedColumns: {
+            left: 1
         },
 
         // Name the columns to make things more readable later
@@ -75,7 +81,7 @@ $(document).ready(function() {
                 //Name the CSV - will change to the name of the input text later
                 filename: $("#input-text-title").text(),
                 text: 'Pleco',
-                extension:'.txt',
+                //extension:'.txt',
                 exportOptions: {
                         columns: ["word:name"] //$("#area_column")
                 },
