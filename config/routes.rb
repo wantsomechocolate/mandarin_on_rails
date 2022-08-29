@@ -27,4 +27,8 @@ Rails.application.routes.draw do
     resources :shingles
   end
 
+  get '/how_to_use', to: 'static_pages#how_to_use'
+  get '/resources', to: 'static_pages#resources'
+  get '/how_it_works', to: 'static_pages#how_it_works'
+
 end
