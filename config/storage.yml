@@ -32,3 +32,11 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+# Remember not to checkin your GCS keyfile to a repository
+# [START cloudrun_rails_storage]
+google:
+  service: GCS
+  project: <%= ENV["GOOGLE_PROJECT_ID"] %>
+  bucket: <%= ENV["STORAGE_BUCKET_NAME"] %>
+# [END cloudrun_rails_storage]
