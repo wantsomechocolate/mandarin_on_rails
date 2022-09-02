@@ -2,9 +2,15 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
+#local:
+#  service: Disk
+#  root: <%= Rails.root.join("storage") %>
+
 local:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+  service: GCS
+  project: mandarinonrails #<%= ENV["GOOGLE_PROJECT_ID"] %>
+  bucket:  mandarinonrails #<%= ENV["STORAGE_BUCKET_NAME"] %>
+  credentials: <%= Rails.root.join("config/mandarinonrails-4d77fe9103ae.json") %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
@@ -37,6 +43,7 @@ local:
 # [START cloudrun_rails_storage]
 google:
   service: GCS
-  project: <%= ENV["GOOGLE_PROJECT_ID"] %>
-  bucket: <%= ENV["STORAGE_BUCKET_NAME"] %>
+  project: mandarinonrails #<%= ENV["GOOGLE_PROJECT_ID"] %>
+  bucket:  mandarinonrails #<%= ENV["STORAGE_BUCKET_NAME"] %>
+  credentials: <%= Rails.root.join("config/mandarinonrails-4d77fe9103ae.json") %>
 # [END cloudrun_rails_storage]

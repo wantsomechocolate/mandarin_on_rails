@@ -10,6 +10,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+
 development:
   <<: *default
   database: postgres
@@ -18,11 +19,13 @@ development:
   host: /var/run/postgresql
   port: 5433
 
-  #<<: *default
-  #database: mandarinonrailsdb #<%= ENV["PRODUCTION_DB_NAME"] %>
-  #username: mandarinonrailsdb #<%= ENV["PRODUCTION_DB_USERNAME"] %>
-  #password: <%= Rails.application.credentials.gcp[:db_password] %>
-  #host: /cloudsql/mandarinonrails:us-central1:mandarinonrailsdb #"<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
+
+# development:
+#   <<: *default
+#   database: mandarinonrailsdb
+#   username: mandarinonrailsdb
+#   password: <%= ENV['DB_PASSWORD'] %>
+#   host: /cloudsql/mandarinonrails:us-central1:mandarinonrailsdb
 
 
 # Warning: The database defined as "test" will be erased and
