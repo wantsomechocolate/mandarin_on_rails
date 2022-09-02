@@ -5,31 +5,44 @@
 #   gem "sqlite3"
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: postgres
+  username: wantsomechocolate
+  password: wantsomechocolate
+  host: /var/run/postgresql
+  port: 5433
+
+  #<<: *default
+  #database: mandarinonrailsdb #<%= ENV["PRODUCTION_DB_NAME"] %>
+  #username: mandarinonrailsdb #<%= ENV["PRODUCTION_DB_USERNAME"] %>
+  #password: <%= Rails.application.credentials.gcp[:db_password] %>
+  #host: /cloudsql/mandarinonrails:us-central1:mandarinonrailsdb #"<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
-
-#production:
-#  <<: *default
-#  database: db/production.sqlite3
+  database: postgres_test
+  username: wantsomechocolate_test
+  password: wantsomechocolate_test
+  host: /var/run/postgresql
+  port: 5433
 
 
 # [START cloudrun_rails_database]
 production:
   <<: *default
-  database: <%= ENV["PRODUCTION_DB_NAME"] %>
-  username: <%= ENV["PRODUCTION_DB_USERNAME"] %>
+  database: mandarinonrailsdb #<%= ENV["PRODUCTION_DB_NAME"] %>
+  username: mandarinonrailsdb #<%= ENV["PRODUCTION_DB_USERNAME"] %>
   password: <%= Rails.application.credentials.gcp[:db_password] %>
-  host: "<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
+  host: /cloudsql/mandarinonrails:us-central1:mandarinonrailsdb #"<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
+
 # [END cloudrun_rails_database]

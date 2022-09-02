@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_12_190612) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_02_143511) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_190612) do
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
-    t.integer "article_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -58,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_190612) do
   end
 
   create_table "input_texts", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "title"
     t.text "body"
     t.boolean "public"
@@ -70,14 +73,52 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_190612) do
     t.index ["user_id"], name: "index_input_texts_on_user_id"
   end
 
-# Could not dump table "shingles" because of following StandardError
-#   Unknown type '' for column 'input_text_id'
+  create_table "shingles", force: :cascade do |t|
+    t.string "val"
+    t.float "freq"
+    t.integer "hsk_2012"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "count"
+    t.integer "shingle_type"
+    t.bigint "input_text_id"
+    t.index ["input_text_id"], name: "index_shingles_on_input_text_id"
+  end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'attachment' for column 'avatar'
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "guest", default: false
+    t.string "username"
+    t.string "name"
+    t.string "slug"
+    t.json "config"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "articles"
   add_foreign_key "input_texts", "users"
+  add_foreign_key "shingles", "input_texts"
 end

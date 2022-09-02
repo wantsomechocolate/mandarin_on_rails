@@ -1,3 +1,5 @@
+## I guess rails6 doesn't have this?
+
 # Pin npm packages by running ./bin/importmap
 
 pin "application", preload: true
