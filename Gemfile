@@ -85,4 +85,4 @@ gem 'pg'
 gem 'dotenv'
 #gem 'paperclip'
 gem 'active_storage-postgresql'
-
+gem 'google-cloud-secret_manager'
