@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Segmentor</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "fontawesome-all.min", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "main", "data-turbo-track": "reload" %>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"> -->
+
+    <%= stylesheet_link_tag "datatables", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="is-preload">
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Main -->
+          <div id="main">
+            <div class="inner">
+
+                <%= yield %>
+
+            </div>
+          </div>
+
+        <!-- Sidebar -->
+          <div id="sidebar" class="inactive">
+            <div class="inner">
+
+              <!-- Search -->
+                <section id="search" class="alt">
+
+                  <p class="navbar-text float-right">
+                  <% if user_signed_in? %>
+                    Logged in as <br> <strong><%= current_user.email %></strong>
+                  <br>
+                    <%= link_to 'Profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                  <% else %>
+                    <%= link_to "Register", new_user_registration_path, :class => 'navbar-link'  %> |
+                    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                  <% end %>
+                  </p>
+
+                </section>
+
+              <!-- Menu -->
+                <nav id="menu">
+                  <header class="major">
+                    <h2>Navigation</h2>
+                  </header>
+                  <ul>
+                    <li><a href="/input_texts">Homepage</a></li>
+                    <li><a href="/index">Profile</a></li>
+                  </ul>
+                </nav>
+
+              <!-- Section -->
+                <section>
+                  <header class="major">
+                    <h2>Resources</h2>
+                  </header>
+                  <div class="mini-posts">
+                    <article>
+                      <!-- <h3>Pleco</h3> -->
+                      <a href="#" class="image"><%=image_tag("pleco.jpg")%></a>
+                      <p>How to use this site with Pleco's flashcard feature</p>
+                    </article>
+                    <article>
+                      <!-- <h3>Word Lists</h3> -->
+                      <a href="#" class="image"><%=image_tag("bcc.jpg")%></a>
+                      <p>Where the word frequency information came from and a link to a Pleco forum where you can download them</p>
+                    </article>
+                    <article>
+                      <!-- <h3>HSK</h3> -->
+                      <a href="#" class="image"><%=image_tag("hsk.jpg")%></a>
+                      <p>The sources that were used for the HSK word lists and the methodology for determining HSK level of words that are not in the official lists.</p>
+                    </article>                    
+                  </div>
+                  <!--<ul class="actions">
+                    <li><a href="#" class="button">More</a></li>
+                  </ul> -->
+                </section>
+
+              <!-- Section -->
+                <section>
+                  <header class="major">
+                    <h2>Meet the developer</h2>
+                  </header>
+                  <p>If you have a question about the site or want to see other stuff by the developer</p>
+                  <ul class="contact">
+                    <li class="icon solid fa-envelope">jamesfrancismcglynn@gmail.com</li>
+                    <li class="icon solid fa-globe"><a href="https://www.james-mcglynn.info/" target="_blank">My Portfolio</a></li>
+                  </ul>
+                </section>
+
+              <!-- Footer -->
+                <footer id="footer">
+                  <p class="copyright">&copy; Untitled. All rights reserved. </p> 
+                  <p>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+
+            </div>
+          </div>
+
+      </div>
+
+
+      <!-- Scripts -->
+
+      <%= javascript_include_tag "jquery.min", "data-turbo-track" => "reload"  %>
+      <%= javascript_include_tag "browser.min", "data-turbo-track" => "reload"  %>
+      <%= javascript_include_tag "breakpoints.min", "data-turbo-track" => "reload"  %>
+      <%= javascript_include_tag "util", "data-turbo-track" => "reload"  %>
+      <%= javascript_include_tag "main", "data-turbo-track" => "reload"  %>
+      <%= javascript_include_tag "datatables", "data-turbo-track" => "reload"  %>
+      <%= javascript_include_tag "custom", "data-turbo-track" => "reload"  %>
+
+
+  </body>
+</html>

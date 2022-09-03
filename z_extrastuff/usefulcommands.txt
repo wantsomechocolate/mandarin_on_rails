@@ -1,0 +1,5 @@
+build command
+gcloud builds submit --config cloudbuild.yaml --substitutions _SERVICE_NAME=mandarinonrails,_INSTANCE_NAME=mandarinonrailsdb,_REGION=us-central1,_SECRET_NAME=RAILS_MASTER_KEY
+
+deploy command
+gcloud run deploy mandarinonrails --platform managed --region us-central1 --image gcr.io/mandarinonrails/mandarinonrails --add-cloudsql-instances mandarinonrails:us-central1:mandarinonrailsdb --allow-unauthenticated

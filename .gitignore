@@ -35,3 +35,6 @@
 /config/master.key
 /config/*.json
 /config/*.key
+
+
+/z_extrastuff/sensative

@@ -1,0 +1,206 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/*###############################################################################################*/
+/*DATATABLES CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.table-wrapper{
+    width: 100%;
+    overflow: hidden;
+}
+
+/*.dataTables_length{
+    min-width: 10em;
+}*/
+
+select[name="my-table_length"],
+select[name="my-input-texts_length"]{
+    text-align: center;
+}
+
+.dataTables_filter label input{
+    margin-left: 0 !important;
+}
+
+
+select{
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+/*
+#sidebar > a{
+    background-color: white;
+}
+*/
+
+
+
+/*#main{
+    margin-top: 3em;
+}*/
+
+
+/*#my-table_wrapper { overflow-x: auto; }
+#my-table_wrapper table { white-space: nowrap; }*/
+
+table#my-table,
+table#my-input-texts {
+    width: 100% !important;
+}
+
+/*table#my-table {
+  display: block;
+  overflow-x: auto;
+  width: 100% !important;
+}*/
+
+/*table {
+  display: block;
+  overflow-x: auto;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  white-space: nowrap;
+}*/
+
+table th,
+table td{
+    text-align: center !important;
+}
+
+/*###############################################################################################*/
+/*DEVISE CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.devise-form label{
+    margin: 2em 0 0 0;
+}
+
+.devise-form img{
+    height:  10em;
+}
+
+
+
+/*###############################################################################################*/
+/*DEVISE/HTML TEMPLATE CUSTOMIZATION*/
+/*###############################################################################################*/
+
+.input-text-show-section img{
+    /*height: 4em;*/
+    margin-right: 1em;
+}
+
+.input-text-show-section h1{
+    margin: 0;
+}
+
+
+.input-text-show-title-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 90%;
+  height: 5em;
+  /*text-align: center;*/
+  /* this does align h1 if h1 is wider than its containing text */
+}
+
+.input-text-show-title-container>h1 {
+  flex: 1; /* this makes the h1 take all available width in its containing div, and makes text-align: center property work inside section1 */
+  align-self: center /* this is finally the property that vertically aligns the h1 title inside its containing div */
+}
+
+p.input-text-show-body{
+    max-height: 10em;
+    overflow-y: auto;
+}
+
+/*Copied styles from the template and added them to this file selector thing-a-majig*/
+input::file-selector-button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  background-color: transparent;
+  border-radius: 0.375em;
+  border: 0;
+  box-shadow: inset 0 0 0 2px #f56a6a;
+  color: #f56a6a !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto Slab", serif;
+  font-size: 0.8em;
+  font-weight: 700;
+  height: 3.5em;
+  letter-spacing: 0.075em;
+  line-height: 3.5em;
+  padding: 0 2.25em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.input-text-edit-section img{
+    height: 10em;
+}
+
+.input-text-edit-section input[type="checkbox"]{
+    appearance:  auto !important;
+    opacity: 1;
+}
+
+.input-text-edit-section p{
+    margin: 0;
+}
+
+
+input[type="datetime-local"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: #ffffff;
+  border-radius: 0.375em;
+  border: none;
+  border: solid 1px rgba(210, 215, 217, 0.75);
+  color: inherit;
+  display: block;
+  outline: 0;
+  padding: 0 1em;
+  text-decoration: none;
+  width: 100%;
+}
+
+
+.input-text-index-section img{
+    height: 5em;
+    /*margin-right: 1em;*/
+}
+
+.input-text-index-section > div > * {
+    display: inline;
+}

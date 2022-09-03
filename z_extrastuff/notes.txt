@@ -1,0 +1,121 @@
+Devise
+
+https://github.com/heartcombo/devise
+
+Devise will create some helpers to use inside your controllers and views. To set up a controller with user authentication, just add this before_action (assuming your devise model is 'User'):
+before_action :authenticate_user!
+
+
+To verify if a user is signed in, use the following helper:
+user_signed_in?
+
+For the current signed-in user, this helper is available:
+current_user
+
+You can access the session for this scope:
+user_session
+
+
+
+
+
+But what you may want to consider is creating (guest) user records implicitly without the normal sign up procedure. I would just use Warden and have a bare bones user model and a cron tab that cleans out unneeded data periodically.
+
+
+
+A user visits the site
+A guest record is automatically created from their session. 
+Anytime they press the process button, the text is saved
+and the result is saved. 
+
+If they want to make an account, how to convert the guest account into a real account? a name change, and a password change, I suppose? 
+
+
+https://github.com/cbeer/devise-guests
+
+
+
+
+Database structure
+I will store the word lists in global for now? I production I can store them in s3? Or whatever google's version of that is. 
+
+Users will be handled by devise and devise-guest
+
+Texts will be saved (and the results of the processing, number of words found, estimated difficulty? etc etc)
+
+Tokens will obviously be saved, I could lookup stuff on display like HSK and stuff like that, or I could save it
+
+KnownWords also needs to be saved so I can exclude them by default
+
+Downloads (or at least a record that something was downloaded)
+
+
+
+A user visits the site
+They paste in some text and hit process - are they already a guest user? Does hitting process result in a database operation? I guess that would make my life easier? then texts and tokens could be partials? and tokens always belong to texts? 
+
+But texts always belong to users
+
+So if a user is deleted, their texts and known words are deleted, which should also delete their tokens.
+
+Also, a typical page would show the edit page for a text and the associated tokens, right?
+But everytime you "edit" a text, it would be saved as another text....
+
+I think it would be best to seperate out processing and saving.
+That would mean that texts should not editable after they are created
+The only thing that can get edited are certain fields of the tokens. 
+
+That also gives me an easy spot to switch a user from guest to logged in. 
+
+So I will keep going on my current path for a little longer, I don't think I'm wasting any time with the ajax thing anymore. 
+
+
+
+
+Get sessions working, when the page reloads, put text from session back in and click the process button (if there is something in the session)(how to access the session from javascript?, ajax call?)
+
+
+Need to add something to alert people that they need to upload a text file instead of pasting if they get a specific error 
+-0400 HTTP Parse error, malformed request
+The max was 1024*10 or 10240, so I will put a max of 10,000 characters for that input field, or easier, just take the first 10,000 characters from it. Remember that this is a tool to help people, no is paying me to implement field validators. 
+
+Then I need to add file upload, but obviously you need to be a verified user first right? 
+
+
+WORKFLOW
+User visits a site the first time and they land at the main page with the welcome message
+They are immediately registered as a guest user if they have no prior session
+
+The first time they hit process, the text and tokens are saved in the db and they are redirected 
+
+
+
+I need to remove words that consist only of spaces, done, I didn't have space in the stop words. But I might want to keep it that way because it parses out english in chunks, I think a better way would be to have no stop words, but convert all whitespace to a single space or a single space to empty string (default behavior of split.join(" ")) before adding unknown.
+
+I also realized that my trie only has the global list in it, but in reality it should probably have access to all the dictionaries, that way when segmenting, I can put the word type, otherwise, I have to segment using only the global list and then check to see if any unknown words are in the user dict or finally the community dict, is that better? 
+
+This way I would be able to override global with user rather than global be the main guy, right? It would feel more consistant as well? 
+
+The reasion I build the trie and the hash at the same time is to save time because the file has lots of rows in it,
+But maybe I should add a method to add words to the trie? yeah because I add words to the hash after the fact, why not add words to the trie? ok I'll take a look at that, maybe in the meantime, though I just look at unknown words and update their type if I see them? 
+
+
+Add ability to remove unknowns of certain count, this should all just be able to be done client side, right?
+nah, because then I can't have the script without rails. DataTables should just be exploratory. searching and sorting?
+filters have to be server side then...?
+
+User gets all the defaults copied to their account on creation. Restore default restores whatever the defaults are set to when the default is restored, so if the default changes in the meantime, it wouldn't be "restored" back to the original. 
+
+
+
+
+Clean up datatables ajax requests like this guys
+https://www.gyrocode.com/articles/jquery-datatables-how-to-show-loading-indicator-during-table-reload/
+
+
+
+For my token edit view
+http://railscasts.com/episodes/198-edit-multiple-individually?view=asciicast
+
+This seems to be exactly what I want for my tokens?
+https://editor.datatables.net/examples/inline-editing/simple
