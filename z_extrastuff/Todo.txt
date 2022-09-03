@@ -1,0 +1,2 @@
+1.) Get active mail setup so that users work on GCP
+2.) Make sure you actually complete the logic for transitioning guest users to actual users. 
