@@ -1,2 +1,4 @@
 1.) Get active mail setup so that users work on GCP
 2.) Make sure you actually complete the logic for transitioning guest users to actual users. 
+3.) Being able to mark known words
+4.) default markings based on settings
