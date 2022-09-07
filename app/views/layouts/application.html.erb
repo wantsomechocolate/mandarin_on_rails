@@ -55,6 +55,13 @@
             </ul>
           </nav>
 
+          <% flash.each do |key, msg| %>
+              <div class="alert alert-<%= key %>">
+                  <a class="close" data-dismiss="alert">x</a>
+                  <%= msg.html_safe %>
+              </div>
+          <% end %>
+          
           <!-- <section>
             <div class="inner"> -->
               <!-- Each page is wrapped in it's own section and inner tags, I did it this way so different pages could have different classes -->
