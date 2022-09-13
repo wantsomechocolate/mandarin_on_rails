@@ -23,7 +23,6 @@
     overflow: hidden;
 }
 
-
 select[name="my-table_length"],
 select[name="my-input-texts_length"]{
     text-align: center;
@@ -38,21 +37,19 @@ select{
     appearance: none;
 }
 
-select::-ms-expand {
-    display: none;
-}
+    select::-ms-expand {
+        display: none;
+    }
 
 table#my-table,
 table#my-input-texts {
     width: 100% !important;
 }
 
-
 table th,
 table td{
     text-align: center !important;
 }
-
 
 .dataTables_info,
 .dataTables_paginate,
@@ -60,32 +57,13 @@ table td{
     color: #777 !important;
 }
 
-
 a.paginate_button:hover{
     color: #777 !important;
-}
-
-
-/*
-.dtsp-clearAll,
-.dtsp-showAll,
-.dtsp-collapseAll {
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-}
-*/
-
-
-button.dt-button{
-    min-width: 7em;
 }
 
 .dataTables_paginate{
     padding-bottom: 1em;
 }
-
 
 .dtsp-searchPanes > div{
     width: 100%;
@@ -99,11 +77,13 @@ button.dt-button{
     line-height: 0;
 }
 
-
 .dtsp-titleRow button{
     min-width: 12em;
 }
 
+button.dt-button{
+    min-width: 7em;
+}
 
 button.dtsp-paneButton{
     line-height: 3em;
@@ -125,10 +105,19 @@ button.dtsp-paneButton{
 
         }
 
+td{
+    vertical-align: middle;
+}
 
 
 
+tr {
+    height: 50px
+}
 
+td {
+    white-space: nowrap;
+}
 
 
 /*###############################################################################################*/
@@ -143,7 +132,45 @@ button.dtsp-paneButton{
     height:  10em;
 }
 
+.devise-customization label{
+    margin-bottom: 0;
+}
 
+#new_user label{
+    margin-bottom: 0;
+}
+
+/*###############################################################################################*/
+/*HTML TEMPLATE CUSTOMIZATION*/
+/*###############################################################################################*/
+
+footer, 
+header{
+    background-color: whitesmoke !important;
+}
+
+.no-box-shadow{
+    box-shadow: none;
+}
+
+.input-text-new-section form,
+.input-text-edit-section form{
+    margin-bottom: 0;
+}
+
+.input-text-new-section input[type="submit"],
+.input-text-edit-section input[type="submit"]{
+    margin-bottom: 0.65em;
+}
+
+.input-text-new-section form[type="file"]
+.input-text-edit-section input[type="file"]{
+
+}
+
+.resources img{
+    max-width: 20em;
+}
 
 /*###############################################################################################*/
 /*INDEX CUSTOMIZATION*/
@@ -156,6 +183,10 @@ button.dtsp-paneButton{
 
 .input-text-index-section > div > * {
     display: inline;
+}
+
+.input-text-index-section .button.icon:before{
+    margin-right: 0 !important;
 }
 
 
@@ -180,8 +211,6 @@ button.dtsp-paneButton{
 /*###############################################################################################*/
 /*SHOW CUSTOMIZATION*/
 /*###############################################################################################*/
-
-
 
 .input-text-show-section img{
     margin-right: 1em;
@@ -212,7 +241,18 @@ p.input-text-show-body{
     overflow-y: auto;
 }
 
+.input-text-show-container h1, h2, h3, h4, h5, h6{
+    vertical-align: middle;
+    margin: auto 0;
+}
 
+.input-text-show-title-container{
+    height: fit-content;
+}
+
+.input-text-show-title-container img{
+    height: 5em;
+}
 
 /*###############################################################################################*/
 /*FORM CUSTOMIZATION*/
@@ -246,39 +286,12 @@ input[type="datetime-local"] {
         }
 
 
-
-.no-box-shadow{
-    box-shadow: none;
-}
-
-
-
-
-
-.input-text-new-section form,
-.input-text-edit-section form{
-    margin-bottom: 0;
-}
-
-.input-text-new-section input[type="submit"],
-.input-text-edit-section input[type="submit"]{
-    margin-bottom: 0.65em;
-}
-
-.input-text-new-section form[type="file"]
-.input-text-edit-section input[type="file"]{
-
-}
-
-
 input::file-selector-button {
 
 }
 
 
-
 /* Button */
-
 input::file-selector-button {
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -372,51 +385,9 @@ input::file-selector-button.primary:active {
             }
 
 
-
-
 select{
     background-image: url(none);
 }
-
-.input-text-show-container h1, h2, h3, h4, h5, h6{
-    vertical-align: middle;
-    margin: auto 0;
-}
-
-.input-text-index-section .button.icon:before{
-    margin-right: 0 !important;
-}
-
-
-.button.danger{
-    background-color: #dc3545;
-}
-
-.button.danger:hover{
-    background-color: #c82333;
-}
-
-
-
-
-        @media screen and (max-width: 736px) {
-
-            .button.fit {
-                max-width: none;
-            }
-
-        }
-
-        @media screen and (max-width: 360px) {
-
-            .button.fit {
-                max-width: none;
-            }
-
-
-        }
-
-
 
 input[type="checkbox"]{
     border-radius: 4px;
@@ -438,44 +409,42 @@ form p{
 }
 
 
-.devise-customization label{
-    margin-bottom: 0;
+
+
+/*###############################################################################################*/
+/*BUTTON CUSTOMIZATION*/
+/*###############################################################################################*/
+
+
+.button.danger{
+    background-color: #dc3545;
 }
 
-
-
-
-
-
-
-
-td{
-    vertical-align: middle;
+.button.danger:hover{
+    background-color: #c82333;
 }
+        @media screen and (max-width: 736px) {
+            .button.fit {
+                max-width: none;
+            }
+        }
 
-.input-text-show-title-container{
-    height: fit-content;
-}
+        @media screen and (max-width: 360px) {
+            .button.fit {
+                max-width: none;
+            }
 
-.input-text-show-title-container img{
-    height: 5em;
-}
-
-
-
-footer, 
-header{
-    background-color: whitesmoke !important;
-}
+        }
 
 
 
 
 
 
-/*#########################################*/
-/*Adding in nav styles from another template for the header*/
-/*#########################################*/
+
+/*###############################################################################################*/
+/*ADDING NAVIGATION FROM ANOTHER HTML TEMPLATE (STILL HTML5UP)*/
+/*###############################################################################################*/
 
 nav {
     margin: 0;
@@ -488,10 +457,7 @@ nav {
 }
 
 
-
-
 /* Header */
-
     @-moz-keyframes reveal-header {
         0% {
             top: -4em;
@@ -980,10 +946,13 @@ nav {
         }
 
 
+/*###############################################################################################*/
+/*NAV CUSTOMIZATION*/
+/*###############################################################################################*/
+
 #menu a{
     color: white;
 }
-
 
 nav p,
 nav p strong{
@@ -993,25 +962,6 @@ nav p strong{
 header span{
     overflow: hidden;
 }
-
-.resources img{
-    max-width: 20em;
-}
-
-tr {
-    height: 50px
-}
-
-td {
-    white-space: nowrap;
-}
-
-/* I thought I was on to something, but this only works when showing 10 items.
-table#my-table{
-    min-height: 500px;
-}
-*/
-
 
 header a{
     text-decoration: none;
