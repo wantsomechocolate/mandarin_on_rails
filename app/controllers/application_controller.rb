@@ -48,6 +48,12 @@ class ApplicationController < ActionController::Base
       # comment.user_id = current_user.id
       # comment.save!
     # end
+
+    guest_input_texts = guest_user.input_texts.all
+    guest_input_texts.each do |input_text|
+      input_text.user_id = current_user.id
+      input_text.save()
+    end
   end
 
   def create_guest_user

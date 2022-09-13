@@ -7,3 +7,11 @@
 3.) Being able to mark known words
 
 4.) Default markings based on settings
+
+5.) Create job to delete old guest users
+
+6.) Take a look at the devise and turbo drive redirects
+
+7.) Load the trie and dict into memory when starting the application instead of doing it on every load. 
+
+8.) Make tests?

@@ -17,13 +17,11 @@ $(document).ready(function() {
         searchPanes:{
 			cascadePanes: true,
 
-
             dtOpts: {
                 select: {
                     style: 'multi'
                 }
             }
-
 
         },
 
@@ -35,8 +33,8 @@ $(document).ready(function() {
 
         // Name the columns to make things more readable later
         columns: [
+            { name: 'word' },        
             { name: 'index' },
-            { name: 'word' },
             { name: 'count' },
             { name: 'frequency' },
             { name: 'hsk' },
@@ -71,7 +69,6 @@ $(document).ready(function() {
 		      '</select>'
 			
 	    },
-
 
         // Configure the export buttons
         buttons: [
