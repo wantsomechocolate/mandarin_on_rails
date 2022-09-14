@@ -20,6 +20,22 @@
 
   <body> <!-- Taking off class="is-preload" solved all my problems. I guess the template really depended on it, but turbo I guess was messing with when body was supposed to have that tag or not. -->
     <!-- Wrapper -->
+    
+    <% flash.each do |key, value| %>
+        <div class='flash' id='<%= key %>'>
+          <%= value %>
+        </div>
+    <% end %>
+
+
+    <% flash.each do |key, msg| %>
+        <div class="alert alert-<%= key %>">
+            <a class="close" data-dismiss="alert">x</a>
+            <%= msg.html_safe %>
+        </div>
+    <% end %>
+
+
       <div id="wrapper" class="divided">
 
         <!-- Header -->
@@ -55,12 +71,7 @@
             </ul>
           </nav>
 
-          <% flash.each do |key, msg| %>
-              <div class="alert alert-<%= key %>">
-                  <a class="close" data-dismiss="alert">x</a>
-                  <%= msg.html_safe %>
-              </div>
-          <% end %>
+
           
           <!-- <section>
             <div class="inner"> -->
