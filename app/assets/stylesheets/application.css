@@ -966,3 +966,25 @@ header span{
 header a{
     text-decoration: none;
 }
+
+
+#header{
+    z-index: 1 !important;
+}
+
+
+/*###############################################################################################*/
+/*FLASH MESSAGES*/
+/*###############################################################################################*/
+
+.alert {
+    margin-top: 3em;
+    margin-bottom: -1.8em;
+    z-index: 100;
+}
+
+.alert .close {
+    height: 2.2em;
+    border: none;
+    box-shadow: none;
+}

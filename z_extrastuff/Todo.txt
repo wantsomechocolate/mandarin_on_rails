@@ -15,3 +15,8 @@
 7.) Load the trie and dict into memory when starting the application instead of doing it on every load. 
 
 8.) Make tests?
+
+
+
+Watch this video to get flash messages working
+https://www.youtube.com/watch?v=yZDTBItc3ZM&t=316s&ab_channel=GoRails

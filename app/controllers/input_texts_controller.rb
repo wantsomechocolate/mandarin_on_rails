@@ -10,12 +10,16 @@ class InputTextsController < ApplicationController
 	load_and_authorize_resource
 
 	def index
+		
 		@input_texts = current_or_guest_user.input_texts
+
+		#flash.alert = "User not found."
 
 		if @input_texts.any?
 			return @input_texts
 		else
-			redirect_to "/input_texts/new"
+			flash.keep
+			redirect_to "/input_texts/new" #, notice: "You don't have any input texts"
 		end
 
 	end

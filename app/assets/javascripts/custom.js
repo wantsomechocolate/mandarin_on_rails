@@ -89,7 +89,7 @@ $(document).ready(function() {
                         var split_csv = csv.split("\n");
  
                         //Remove the row one to personnalize the headers
-                        split_csv[0] = "// "+$("#input-text-title").text()
+                        split_csv[0] = "\uFEFF"+"// "+$("#input-text-title").text()
  
                         //For each row except the first one (header)
                         $.each(split_csv.slice(1), function (index, csv_row) {
@@ -114,11 +114,19 @@ $(document).ready(function() {
                 }
             },
 
-            {extend:'csv',filename: $("#input-text-title").text(),},
+            {
+                extend:'csv',
+                filename: $("#input-text-title").text(),
+                customize:function(csv){
+                    return "\uFEFF"+csv
+                }
+
+
+            },
             'copy',
-            {extend:'pdf',filename: $("#input-text-title").text(),},
+            //{extend:'pdf',filename: $("#input-text-title").text(),},
             {extend:'excel',filename: $("#input-text-title").text(),},
-            'print',
+            //'print',
         ],
 
         columnDefs:[

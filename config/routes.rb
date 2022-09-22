@@ -31,4 +31,15 @@ Rails.application.routes.draw do
   get '/resources', to: 'static_pages#resources'
   get '/how_it_works', to: 'static_pages#how_it_works'
 
+
+
+  #Rails.application.routes.draw do
+  #  devise_scope :user do
+  #    # Redirests signing out users back to sign-in
+  #    get "users", to: "devise/sessions#new"
+  #  end
+
+  #devise_for :users
+  #end
+
 end

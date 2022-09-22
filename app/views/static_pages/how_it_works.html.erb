@@ -1,3 +1,11 @@
+
+    <% flash.each do |key, value| %>
+        <div class='flash' id='<%= key %>'>
+          <%= value %>
+        </div>
+    <% end %>
+
+
 <section class="wrapper style1 align-left">
 	<div class="inner" id="goal">
 		<h2>The Goal</h2>
