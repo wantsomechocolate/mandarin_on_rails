@@ -29,7 +29,24 @@ class InputTextsController < ApplicationController
 	end
 
 	def show
+
+		known_words = current_or_guest_user.known_words.pluck(:word)
+
+		#puts known_words
+
 		@input_text = InputText.find(params[:id])
+
+		## Remove known shingles from the shingles list
+
+		@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val").where('known_words.id' => nil)
+
+		#puts "Hello!"
+		#puts @shingles
+
+		#filtered_shingles =  @input_text.shingles.select{|h| known_words.include?(h[:val]) == False}
+
+		#puts filtered_shingles
+
 	end
 
 
@@ -56,7 +73,14 @@ class InputTextsController < ApplicationController
 
 			filepath = 'public/global_wordfreq.release_UTF-8.txt'
 			trie,global_dict = build_trie_and_hash(filepath = filepath, num_lines = 100000)
+
+
+			## This needs to be replaced with a call to the database. it should return all the words associated with this user
+			## step one should just be printing them out on the page plain text style.
 			user_dict = USERDICT #User Dictionary
+
+
+
 			comm_dict = COMMDICT #Community Dictionary
 			total_dict = comm_dict.merge(user_dict.merge(global_dict))
 			text = @input_text.body
@@ -71,6 +95,9 @@ class InputTextsController < ApplicationController
 			## go through freq dict and hsk dict and update output list
 			## Most of the stuff here is a workaround until I add
 			## additional logic to the segmentation algo and the trie data structure
+
+			input_text_id = @input_text.id
+
 			shingles.keys.each do |token|
 				if total_dict.has_key?(token)
 					if total_dict[token]['freq'].to_i == 0 
@@ -98,13 +125,16 @@ class InputTextsController < ApplicationController
 
 
 				shingles[token]['val'] = token
-				shingles[token]['input_text_id'] = @input_text.id
+				shingles[token]['input_text_id'] = input_text_id
 
-				puts shingles[token]
+				#puts shingles[token]
 
-				temp = Shingle.new(shingles[token])
-				temp.save
+				temp = Shingle.create(shingles[token])
+				#temp.save
 			end
+
+			#temp = Shingle.insert_all(shingles)
+			#temp.save()
 
 =begin
 			shingles.each.keys do |shingle|

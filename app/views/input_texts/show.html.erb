@@ -33,11 +33,15 @@
 					<th>Frequency</th>
 					<th>HSK</th>
 					<th>Type</th>
+					<th>Mark Known</th>
 
 				</tr>
 			</thead>
 			<tbody id="token-table">
-					<%= render @input_text.shingles %>
+
+
+					<!-- < %= render @input_text.shingles %> -->
+					<%= render @shingles %>
 			</tbody>
 		</table>
 	  </div>
@@ -62,6 +66,14 @@
 		      <%= link_to "My Texts", input_texts_path, class: "button fit" %>
 		  	</div>
 	  	</div>
+
+		<!-- < % current_or_guest_user.known_words.each do |word| %>
+			< %= word.word %>
+		< % end %> -->
+		<br>
+
+
+		
 
 	</div>
 

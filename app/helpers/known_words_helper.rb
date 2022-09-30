@@ -1,0 +1,2 @@
+module KnownWordsHelper
+end

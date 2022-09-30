@@ -1,0 +1,62 @@
+<%= form_with model: user_word do |form| %>
+
+
+
+   	<!-- WOrd -->
+	<div>
+		<%= form.label :word %>
+		<%= form.text_field :word %>
+		
+		<!-- 
+		< % input_text.errors.full_messages_for(:word).each do |message| %>
+			<div>< %= message %></div>
+		< % end %>
+		 -->
+
+	</div>
+	<br>
+	<br>
+
+
+	<!-- word -->
+	<div>
+		<%= form.label :known %>
+		<%= form.check_box :known %>
+	</div>
+	<br>
+	<br>
+
+	<!-- Definition -->
+	<div>
+		<%= form.label :definition %>
+		<%= form.text_area :definition %>
+	</div>
+	<br>
+	<br>
+
+	<!-- Created and Updated Dates -->
+  	<% if action == "edit"  %>
+		<div>
+			<%= form.label :created_at %>
+			<%= form.datetime_field :created_at, :readonly => true %>
+		</div>
+		<br>
+		<br>
+
+		<div>
+			<%= form.label "Last Updated" %>
+			<%= form.datetime_field :updated_at, :readonly => true %>
+		</div>
+		<br>
+		<br>
+  	<% end %>
+
+  	<!-- Form Submit -->
+	<div>
+		<% if action == "edit"  %>
+			<%= form.submit "Update", class: "button fit primary" %>
+		<% else %>
+			<%= form.submit "Process", class: "button fit primary" %>
+		<% end %>
+	</div>
+<% end %>

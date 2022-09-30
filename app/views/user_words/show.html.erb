@@ -1,0 +1,52 @@
+<section class="wrapper style1 align-left input-text-show-section">
+	<div class="inner">
+
+		<div>
+			<h1>User Word View</h1>
+		</div>
+		<div>
+			<p>Use the sorting, filtering, and searching capabilities to filter out words that are not useful to you (you can even drag and drop to reorder columns). Export remaining words in desired format (all export options will listen to the active filters). The Pleco button will export a text file that can be directly imported to Pleco. </p>
+		</div>
+		
+	  <div class="input-text-show-container">
+		<div class="input-text-show-title-container">
+
+
+			<h2 id = "input-text-title" class = "input-text-show-title"><%= @user_word.word %></h2>
+		</div>
+
+		<br>
+		  <div class = "input-text-show-body-container">
+		    <p class = "input-text-show-body" ><%= @user_word.definition %></p>
+		  </div>
+	  </div>
+
+
+
+	  	<div>
+		  	<div>
+		      <%= link_to "Edit", edit_user_word_path(@user_word), class: "button fit primary" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "Delete", user_word_path(@user_word), data: {
+		    	turbo_method: :delete,
+		    	turbo_confirm: "Are you sure?"
+		    	}, class: "button fit primary danger" %> 
+			</div>
+
+			<div>
+		      <%= link_to "Add New Word", new_user_word_path, class: "button fit" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "My Known Words", user_words_path, class: "button fit" %>
+		  	</div>
+	  	</div>
+
+	</div>
+
+</section> 
+
+
+

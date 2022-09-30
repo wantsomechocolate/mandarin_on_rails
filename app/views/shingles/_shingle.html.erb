@@ -5,4 +5,14 @@
 	<td><%= shingle.freq %></td>
 	<td><%= shingle.hsk_2012%></td>
 	<td><%= shingle.shingle_type %></td>
+
+
+	<td>
+	<%= form_tag "/known_word_create_ajax", method: :put, remote: true do %>
+  		<%= hidden_field_tag :word, shingle.val %>
+  		<%= submit_tag 'X' %>
+	<% end %>
+	</td>
+
+
 </tr>

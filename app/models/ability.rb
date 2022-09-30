@@ -40,5 +40,9 @@ class Ability
     
     can :read, InputText, public: true
 
+    can :manage, UserWord, user: user
+
+    can :manage, KnownWord, user: user
+
   end
 end

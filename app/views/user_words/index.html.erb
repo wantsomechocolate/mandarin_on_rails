@@ -1,0 +1,74 @@
+<section class="wrapper style1 align-left input-text-index-section">
+	<div class="inner">
+
+		<div>
+			<h1>My Words</h1>
+		</div>
+		
+		<div>
+			<h2>View, Edit, or Create New</h2>
+		</div>
+		<br>
+		<div>
+			<% if @user_words.any? %>
+				<table id = "my-input-texts" class="alt">
+					<thead>
+						<tr>
+							<th> Name </th>
+							<th> Known </th>	
+							<th> Definition </th>						
+							<th> Created </th>
+							<th> Modified </th>
+							<th> View </th>
+							<th> Edit </th>
+						</tr>
+					</thead>
+					<tbody>
+					 
+						<% @user_words.each do |user_word| %>
+						<tr>
+
+				      		<td>
+				      			<%= user_word.word %>
+				      		</td>
+
+				      		<td>
+				      			<%= user_word.known %>
+				      		</td>
+
+				      		<td>
+				      			<%= user_word.definition %>
+				      		</td>				      		
+
+				      		<td>
+				      			<%= user_word.created_at %>
+				      		</td>
+
+				      		<td>
+				      			<%= user_word.updated_at %>
+				      		</td>
+
+				      		<td>
+								<%= link_to "", user_word_path(user_word), class: "button small no-box-shadow icon fas fa-eye" %>
+				      		</td>
+
+				      		<td>
+								<%= link_to "", edit_user_word_path(user_word), class: "button small no-box-shadow icon fas fa-edit" %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>	
+			<% else %>
+				<p>You don't have any user words yet!</p>
+			<% end %>
+		</div>
+		<br>
+		<div>
+			<div>
+				<%= link_to "Add New", new_user_word_path, class: "button fit primary" %>
+			</div>
+		</div>
+	</div>
+
+</section>

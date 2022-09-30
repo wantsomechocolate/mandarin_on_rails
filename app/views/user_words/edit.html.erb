@@ -1,0 +1,17 @@
+<section class="wrapper style1 align-left input-text-edit-section">
+	<div class="inner">
+
+		<h1> Edit User Word</h1>
+
+		<div>
+		<%= render partial: "form", locals: {user_word: @user_word, action: "edit"} %>
+		</div>
+		<div>
+		<%= link_to "View", user_word_path(@user_word), class: "button fit" %>
+		</div>
+		<div>
+		<%= link_to "My Words", user_words_path, class: "button fit" %>
+		</div>
+	</div>
+
+</section>

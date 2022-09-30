@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_143511) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_27_120152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_143511) do
     t.index ["user_id"], name: "index_input_texts_on_user_id"
   end
 
+  create_table "known_words", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_known_words_on_user_id"
+    t.index ["word"], name: "index_known_words_on_word"
+  end
+
   create_table "shingles", force: :cascade do |t|
     t.string "val"
     t.float "freq"
@@ -83,6 +92,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_143511) do
     t.integer "shingle_type"
     t.bigint "input_text_id"
     t.index ["input_text_id"], name: "index_shingles_on_input_text_id"
+  end
+
+  create_table "user_words", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "word"
+    t.boolean "known"
+    t.text "definition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_words_on_user_id"
+    t.index ["word"], name: "index_user_words_on_word"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,5 +140,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_143511) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "articles"
   add_foreign_key "input_texts", "users"
+  add_foreign_key "known_words", "users"
   add_foreign_key "shingles", "input_texts"
+  add_foreign_key "user_words", "users"
 end

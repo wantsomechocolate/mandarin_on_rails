@@ -1,3 +1,80 @@
+Round2 Todo
+I want to start including the functionality of excluding known words
+which means I need to start keeping track of known words for each user. 
+Maybe two completely separate data tables? one with known words, one with new words?
+Or I could even seperate out tokens? Let's keep it simple for now
+
+So I need a table, with user as a reference and word as an indexed column then a known flag, why would a word exist in this table if it is not known? who knowns!
+
+user_word
+
+user has_many user_word
+
+user_word has_one user
+
+user_word columns
+
+user
+
+Work flow in order to take advantage of user_words, I need to load them into the controller when segmentation occurs instead of pulling from the helper file. 
+Should I also have these preloaded to make segmentation faster?
+
+But first I need a way for users to add user_words, that should be pretty basic. I need all those pages for create read update and delete
+Hahahahaha, another datatable?
+
+I feel I've made a terrible design choice, I don't want every known word to be considered a user_word, do I?
+Because right now, in order to mark a word as known, I need to create a user_word for it. 
+
+That's bascially what I'd be doing anyway right? Otherwise I'd have a massive table of dictionary words and then another table to keep track of which users know which words. But I'm not even storing the massive table, so I'd need to create that first. I think this is the only way for now,
+
+But then to mark words as known, I'm essentially just creating an entry in the user_words dict for that word. 
+
+Hmmm, I think the table for known words should be different from user_words?
+
+Then for now I won't enfore that known words be references to other tables? But then what's the difference between known and user? 
+When a user marks a word as known, what do they really want from that? Personally I want to not see it when I'm making a word list
+But a count of them would still be useful? 
+
+And I also need a way to mark multiple words as known at the same time. So I need a button with some javascript that can round up all the boxes that have been checked or unchecked (or I can just send all words back?) and then update the db. Then I don't need to rerun the analysis, but I'd need a way to have all the numbers update to reflect the new known words? I guess I could just reload the page, or at least reload the table
+
+I got it, when a word is marked known, I look at the hsk and the frequency and I add it to the known word? 
+Or no, I can just fetch that information when displaying a word, so that it can be sorted on. 
+
+When a word gets marked as known, I can have javascript that just hides that row of the table??????
+And then I can have the form in the background that actually updates the record, so on page load, it won't come back! So just a button that says, mark as known
+So the first thing is to figure out this ajax form submit so I can mark a word as known
+
+Could I just add something to the new function in the user_words controller so that it knows it's getting requested via ajax?
+But then hang on a minute, then the shingle also needs to be updated with the type of word?
+
+This is getting a little messy.
+
+What's the ideal?
+Put the frequency words in the db
+user_words in the db
+hsk words in the db
+single characters in the db?
+But then those three/four sources can overlap.........
+
+What's the easiest way to move forward
+Use the user_words table as known words, stop using the definition field
+it's just a map of word and known
+it shouldn't even override USER_WORDS when generating shingles, it's only to mark words as known
+
+In that case, I just need a button on the datatables table that will take the word and just create a new entry (or update if entry exists) a user_word (should really be called known_word)
+
+
+Now when I load the shingles, I only send unknown words to the client side! that's like totaly minimum viable right there. 
+
+
+How to I mark a word as known with a button
+I need to add a button that automatically visits the create method
+
+
+
+
+
+
 Devise
 
 https://github.com/heartcombo/devise
