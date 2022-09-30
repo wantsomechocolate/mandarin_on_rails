@@ -38,7 +38,7 @@ class InputTextsController < ApplicationController
 
 		## Remove known shingles from the shingles list
 
-		@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val").where('known_words.id' => nil)
+		@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val AND known_words.user_id = "+current_or_guest_user.id.to_s).where('known_words.id' => nil)
 
 		#puts "Hello!"
 		#puts @shingles

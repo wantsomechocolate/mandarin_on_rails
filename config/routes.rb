@@ -31,9 +31,9 @@ Rails.application.routes.draw do
 
   resources :known_words
 
-  put "/known_word_create_ajax/:id", to: "known_words#create_ajax"
-  put "/known_word_create_ajax", to: "known_words#create_ajax"
-  post "/known_word_create_ajax/:id", to: "known_words#create_ajax"
+  #put "/known_word_create_ajax/:id", to: "known_words#create_ajax"
+  #put "/known_word_create_ajax", to: "known_words#create_ajax"
+  post "/known_word_create_ajax/:word", to: "known_words#create_ajax"
   post "/known_word_create_ajax", to: "known_words#create_ajax"
 
   get '/how_to_use', to: 'static_pages#how_to_use'

@@ -63,6 +63,29 @@ class KnownWordsController < ApplicationController
 
   def create_ajax
 
+    puts "I WAS CALLED ################################################################################################"
+    puts params
+
+    #if params["controller"]=="known_words"
+      @known_word = KnownWord.new(known_word_params_ajax)
+      #@known_word['user_id'] = params["user_id"]
+    
+      if @known_word.save
+        #flash.notice = @known_word.word+" marked as known"
+        #redirect_back(fallback_location: root_path)
+        render :json => {"staus" => "success"}
+      else
+        #render :new, status: :unprocessable_entity
+        #flash.warning = "There was a problem, the word was not marked"
+        #redirect_back(fallback_location: root_path)
+        render :json => {"staus" => "failure"}
+      end 
+
+    #end
+
+  end
+
+=begin    
     @known_word = KnownWord.new(known_word_params_ajax)
     @known_word['user_id'] = current_or_guest_user.id
 
@@ -73,8 +96,9 @@ class KnownWordsController < ApplicationController
       #render :new, status: :unprocessable_entity
       flash.warning = "There was a problem, the word was not marked"
       redirect_back(fallback_location: root_path)
-    end
-  end
+    end 
+=end
+
 
 
 
@@ -85,7 +109,7 @@ class KnownWordsController < ApplicationController
     end
 
     def known_word_params_ajax
-      params.permit(:word)
+      params.permit(:user_id, :word)
     end
 
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	/*alert("heu")*/
-    $('#my-table').DataTable({
+    var table = $('#my-table').DataTable({
 
 
         /*
@@ -39,6 +39,7 @@ $(document).ready(function() {
             { name: 'frequency' },
             { name: 'hsk' },
             { name: 'type' },
+            { name: 'mark'},
         ],
 
         /*columns: [
@@ -220,12 +221,45 @@ $(document).ready(function() {
                 targets:[5]
             },
 
+            {
+                targets:-1,
+                data:null,
+                defaultContent:'<button>X</button>',
+            }
+
         ],
 
         scrollX: true,
 
 
     });
+
+
+
+    $('#my-table tbody').on('click', 'button', function () {
+        var word = table.row($(this).parents('tr')).data()[0];
+        var user_id = $(this).parents('table').attr("user_id");
+        console.log(user_id)
+
+        var row = $(this).parents('tr')        
+        
+        $.ajax({
+          url: '/known_word_create_ajax',
+          type: 'POST',
+          data: {"word":word, "user_id":user_id},
+          success: function(res) {
+            console.log(res)
+            console.log('Load was performed.');
+            row.css({"display":"none"})
+          }
+        });
+
+
+    });
+
+
+
+
 
 	
 	$('#my-input-texts').DataTable({
