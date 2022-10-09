@@ -207,7 +207,7 @@ $(document).ready(function() {
             {
                 searchPanes:{
                 	initCollapsed: true,
-                	preSelect: ["-1","4","5","6"], // This isn't working :/
+                	// preSelect: ["-1","4","5","6"], // This isn't working :/
                 },
                 targets:[4]
             },
@@ -254,7 +254,6 @@ $(document).ready(function() {
           }
         });
 
-
     });
 
 
@@ -280,6 +279,26 @@ $(document).ready(function() {
         order: [[2,'desc']],
 
 	})
+
+
+    $('#my-known-words').DataTable({
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search...",
+            lengthMenu:'<select>'+
+              '<option value="10">10</option>'+
+              '<option value="20">20</option>'+
+              '<option value="50">50</option>'+
+              '<option value="100">100</option>'+
+              '</select>'
+            
+        },
+
+        scrollX: true,
+
+        order: [[1,'desc']],
+
+    })
 
 
 });

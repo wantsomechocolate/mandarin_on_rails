@@ -24,7 +24,8 @@
 }
 
 select[name="my-table_length"],
-select[name="my-input-texts_length"]{
+select[name="my-input-texts_length"],
+select[name="my-known-words_length"]{
     text-align: center;
 }
 
@@ -42,7 +43,8 @@ select{
     }
 
 table#my-table,
-table#my-input-texts {
+table#my-input-texts,
+table#my-known-words {
     width: 100% !important;
 }
 

@@ -1,0 +1,65 @@
+
+<%= form_with model: user do |form| %>
+
+
+
+   	<!-- Word -->
+	<div>
+		<!-- < %= form.label :email %> -->
+		<%= form.text_field :email %>
+		
+		
+		<% user.errors.full_messages_for(:email).each do |message| %>
+			<div><%= message %></div>
+		<% end %>
+	</div>
+	<br>
+	<br>
+
+
+   	<!-- Approved -->
+	<div>
+		<%= form.label :approved %>
+		<%= form.check_box :approved %>
+		<% user.errors.full_messages_for(:approved).each do |message| %>
+			<div><%= message %></div>
+		<% end %>
+	</div>
+	<br>
+	<br>
+
+
+   	<!-- Role -->
+	<div>
+		<%= form.label :role %>
+		<%= form.select :role, options_for_select([['standard'], ['admin']]) %>
+		<% user.errors.full_messages_for(:role).each do |message| %>
+			<div><%= message %></div>
+		<% end %>
+	</div>
+	<br>
+	<br>
+
+
+	<!-- Created and Updated Dates -->
+  	<!-- < % if action == "edit"  %> -->
+		<div>
+			<%= form.label :created_at %>
+			<%= form.datetime_field :created_at, :readonly => true %>
+		</div>
+		<br>
+		<br>
+
+		<div>
+			<%= form.label "Last Updated" %>
+			<%= form.datetime_field :updated_at, :readonly => true %>
+		</div>
+		<br>
+		<br>
+  	<!-- < % end %> -->
+
+  	<!-- Form Submit -->
+	<div>
+		<%= form.submit "Submit", class: "button fit primary" %>
+	</div>
+<% end %>

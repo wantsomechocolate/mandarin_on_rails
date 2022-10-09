@@ -54,10 +54,20 @@ class ApplicationController < ActionController::Base
       input_text.user_id = current_user.id
       input_text.save()
     end
+
+
+    ## Transfer known words
+    guest_known_words = guest_user.known_words.all
+    guest_known_words.each do |known_word|
+      known_word.user_id = current_user.id
+      known_word.save()
+    end
+
+
   end
 
   def create_guest_user
-    u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com", :guest => true)
     u.save!(:validate => false)
     session[:guest_user_id] = u.id
     u

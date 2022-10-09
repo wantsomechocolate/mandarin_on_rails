@@ -1,0 +1,24 @@
+<section class="wrapper style1 align-left input-text-index-section input-text-edit-section">
+	<div class="inner">
+
+		<h1> Edit User</h1>
+		<div>
+		<%= render partial: "form", locals: {user: @user, action: "edit"} %>
+		</div>
+		<div>
+		<%= link_to "View User", user_path(@user), class: "button fit" %>
+		</div>
+		<br>
+	  	<div>
+	      <%= link_to "Delete User", user_path(@user), data: {
+	    	turbo_method: :delete,
+	    	turbo_confirm: "Are you sure?"
+	    	}, class: "button fit primary danger" %> 
+		</div>
+		<br>	
+		<div>
+		<%= link_to "All Users", users_path, class: "button fit" %>
+		</div>
+
+	</div>
+</section>

@@ -1,0 +1,70 @@
+
+<section class="wrapper style1 align-left input-text-show-section">
+	<div class="inner">
+
+		<div>
+			<h1>User View</h1>
+		</div>
+		
+	  <div class="input-text-show-container">
+		<div class="input-text-show-title-container">
+			<h2 id = "input-text-title" class = "input-text-show-title"><%= @user.email %> is 
+				<% if @user.approved %> definitly <% else %> not  <% end %> approved</h2>
+		</div>
+		<br>
+
+		ID: <%= @user.id %>
+		<br>
+		Email: <%= @user.email %>
+		<br>
+		Login Count: <%= @user.sign_in_count %>
+		<br>
+		Current IP: <%= @user.current_sign_in_ip %>
+		<br>
+		Unconfirmed Email: <%= @user.unconfirmed_email %>
+		<br>
+		Is Guest: <%= @user.guest %>
+		<br>
+		Username: <%= @user.username %>
+		<br>
+		Name: <%= @user.name %>
+		<br>
+		Is Approved: <%= @user.approved %>
+		<br>
+		Role: <%= @user.role %>
+		<br>
+
+
+
+
+	  </div>
+
+	  <br>
+
+	  	<div>
+		  	<div>
+		      <%= link_to "Edit User", edit_user_path(@user), class: "button fit primary" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "Delete User", user_path(@user), data: {
+		    	turbo_method: :delete,
+		    	turbo_confirm: "Are you sure?"
+		    	}, class: "button fit primary danger" %> 
+			</div>
+
+			<div>
+		      <%= link_to "Create User", new_user_path, class: "button fit" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "All Users", users_path, class: "button fit" %>
+		  	</div>
+	  	</div>
+
+	</div>
+
+</section> 
+
+
+

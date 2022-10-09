@@ -44,5 +44,9 @@ class Ability
 
     can :manage, KnownWord, user: user
 
+    #can :manage, User #, user: user
+
+    can :manage, :all if user.role == "admin"
+
   end
 end

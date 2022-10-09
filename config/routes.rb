@@ -1,6 +1,16 @@
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  devise_for :users
+
+  #devise_for :users
+  
+  ## How to combine with the below?
+  #devise_for :users, controllers: {
+  #    sessions: 'users/sessions'
+  #}
+
+  devise_for :users, :path_prefix => 'd' # routes for devise modules on User
+
+  resources :users # custom admin-type CRUD for users
 
   ## Maps root of application to articles controller index action
   root "input_texts#index"
@@ -41,6 +51,11 @@ Rails.application.routes.draw do
   get '/how_it_works', to: 'static_pages#how_it_works'
 
 
+  #Rails.application.routes.draw do
+  #  devise_for :users, controllers: {
+  #    sessions: 'users/sessions'
+  #  }
+  #end
 
   #Rails.application.routes.draw do
   #  devise_scope :user do

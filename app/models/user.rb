@@ -10,6 +10,15 @@ class User < ApplicationRecord
          :omniauthable
 
 
+  def active_for_authentication? 
+    super && approved?
+  end 
+  
+  def inactive_message 
+    approved? ? super : :not_approved
+  end
+
+
   has_one_attached :avatar, dependent: :destroy
 
   has_many :input_texts, dependent: :destroy
@@ -21,4 +30,16 @@ class User < ApplicationRecord
     file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
 
 
+
+
 end
+
+#id
+#email
+#sign_in_count
+#current_sign_in_ip
+#unconfirmed_email
+#guest
+#username
+#name
+#approved

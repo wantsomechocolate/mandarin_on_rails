@@ -4,9 +4,7 @@ class KnownWordsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    
     @known_words = current_or_guest_user.known_words
-
   end
 
 
@@ -19,17 +17,11 @@ class KnownWordsController < ApplicationController
     @known_word = KnownWord.new
   end
 
-  def create
-  
+
+  def create  
     @known_word = KnownWord.new(known_word_params)
-
 	  @known_word['user_id'] = current_or_guest_user.id
-
     if @known_word.save
-      ## this works by looking at the prefixes for the paths
-      ## we find known_word, which knows then to find the ID 
-      ## because its in the route definition
-      #redirect_to @known_word 
       redirect_to known_words_url
     else
       render :new, status: :unprocessable_entity
@@ -41,6 +33,7 @@ class KnownWordsController < ApplicationController
     @known_word = KnownWord.find(params[:id])
   end
 
+
   def update
     @known_word = KnownWord.find(params[:id])
 
@@ -51,18 +44,16 @@ class KnownWordsController < ApplicationController
     end
   end
 
+
   def destroy
     @known_word = KnownWord.find(params[:id])
     @known_word.destroy
-
     #redirect_to root_path, status: :see_other
     redirect_to known_words_url, status: :see_other
-
   end
 
 
   def create_ajax
-
     puts "I WAS CALLED ################################################################################################"
     puts params
 
@@ -80,9 +71,7 @@ class KnownWordsController < ApplicationController
         #redirect_back(fallback_location: root_path)
         render :json => {"staus" => "failure"}
       end 
-
     #end
-
   end
 
 =begin    
