@@ -39,4 +39,16 @@ class User < ApplicationRecord
     AdminMailer.new_user_waiting_for_approval(email).deliver
   end
 
+
+  ## Don't send emails to guest email addresses
+  def confirmation_required?
+    if guest 
+      return false
+    else
+      return true 
+    end
+  end
+
+
+
 end
