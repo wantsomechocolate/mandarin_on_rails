@@ -1,16 +1,12 @@
 $(document).ready(function() {
-	/*alert("heu")*/
+
+    // Main Input Text Data Table for sorting/filtering/ and exporting shingles
     var table = $('#my-table').DataTable({
 
-
-        /*
-        ajax: {
-                url: '/update_token_table',
-                type: 'POST',
-                data: {"text":data},
-                dataSrc: ''
-                },
-        */
+        /*ajax: { url: '/update_token_table',
+                  type: 'POST',
+                  data: {"text":data},
+                  dataSrc: ''            },*/
 
         dom: 'RPlfrtipB',
         searchPane:true,
@@ -22,10 +18,9 @@ $(document).ready(function() {
                     style: 'multi'
                 }
             }
-
         },
 
-        order: [[1,'asc']],
+        order: [[3,'desc']],
 
         fixedColumns: {
             left: 1
@@ -54,7 +49,6 @@ $(document).ready(function() {
 
         // order: [[0,'asc']],
         // order: [[2,'desc'],[ 3, 'desc' ]],
-
         // destroy: true,
         // scrollX: true,
         // stateSave: true,        
@@ -68,7 +62,6 @@ $(document).ready(function() {
 		      '<option value="50">50</option>'+
 		      '<option value="100">100</option>'+
 		      '</select>'
-			
 	    },
 
         // Configure the export buttons
@@ -118,42 +111,25 @@ $(document).ready(function() {
             {
                 extend:'csv',
                 filename: $("#input-text-title").text(),
-                customize:function(csv){
-                    return "\uFEFF"+csv
-                }
-
-
+                customize:function(csv){return "\uFEFF"+csv} //So that csv opens with correct encoding in excel
             },
             'copy',
-            //{extend:'pdf',filename: $("#input-text-title").text(),},
             {extend:'excel',filename: $("#input-text-title").text(),},
-            //'print',
         ],
 
         columnDefs:[
 
-        	// Global Search Pane Settings
-            //{
-            //    searchPanes:{
-            //    	initCollapsed: true,
-            //    },
-            //    targets:[0,1,2,3,4,5]
-            //},
-
         	// Count Column
             {
                 searchPanes:{
-                	//show:false,
                 	initCollapsed: true,
                 },
                 targets:[2]
             },
 
-
             //Frequency Column
             {
                 searchPanes:{
-                	// initCollapsed: true,
                 	threshold:1,
                 	show:true,
                 	initCollapsed:true,
@@ -235,14 +211,12 @@ $(document).ready(function() {
     });
 
 
-
+    // Marking words as known. I also want to be able to just delete shingles from an input text this way as well
+    // Maybe this button can actually pop up with some options to choose from. 
     $('#my-table tbody').on('click', 'button', function () {
         var word = table.row($(this).parents('tr')).data()[0];
         var user_id = $(this).parents('table').attr("user_id");
-        console.log(user_id)
-
         var row = $(this).parents('tr')        
-        
         $.ajax({
           url: '/known_word_create_ajax',
           type: 'POST',
@@ -253,36 +227,10 @@ $(document).ready(function() {
             row.css({"display":"none"})
           }
         });
-
     });
 
-
-
-
-
-	
-	$('#my-input-texts').DataTable({
-		language: {
-	        search: "_INPUT_",
-	        searchPlaceholder: "Search...",
-	        lengthMenu:'<select>'+
-		      '<option value="10">10</option>'+
-		      '<option value="20">20</option>'+
-		      '<option value="50">50</option>'+
-		      '<option value="100">100</option>'+
-		      '</select>'
-			
-	    },
-
-		scrollX: true,
-
-        order: [[2,'desc']],
-
-	})
-
-
-    $('#my-known-words').DataTable({
-        language: {
+    // Default options for simpler tables
+    var default_language = {
             search: "_INPUT_",
             searchPlaceholder: "Search...",
             lengthMenu:'<select>'+
@@ -290,15 +238,27 @@ $(document).ready(function() {
               '<option value="20">20</option>'+
               '<option value="50">50</option>'+
               '<option value="100">100</option>'+
-              '</select>'
-            
-        },
+              '</select>'   
+        }
 
+    // Simpler tables
+	$('#my-input-texts').DataTable({
+		language: default_language,
+		scrollX: true,
+        order: [[2,'desc']],
+	})
+
+
+    $('#my-known-words').DataTable({
+        language: default_language,
         scrollX: true,
-
         order: [[1,'desc']],
-
     })
 
+    $('#users-table').DataTable({
+        language: default_language,
+        scrollX: true,
+        order: [[2,'asc'],[1,'desc']], //Show confirmed but not approved at the top of the table
+    })
 
 });

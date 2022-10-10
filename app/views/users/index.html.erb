@@ -1,24 +1,34 @@
 <section class="wrapper style1 align-left input-text-index-section">
 	<div class="inner">
 
-		<table>
+		<h1> User Admin View </h1>
+		<br>
+		<br>
+
+		<table id = "users-table">
+			<thead>
 			<tr>
 				<th>Email</th>
+				<th>Confirmed At</th>
 				<th>Approved</th>
 				<th>Is Guest</th>
 				<th>View</th>
 				<th>Edit</th>
 			</tr>
+			</thead>
+			<tbody>
 
 		  <% @users.each do |user| %>
 		    <tr>
 		      <td><%= user.email %> </td>
+		      <td><%= user.confirmed_at %> </td>
 		      <td><%= user.approved %> </td>
 		      <td><%= user.guest %> </td>
 		      <td><%= link_to "View", user_path(user) %> </td>
 		      <td><%= link_to "Edit", edit_user_path(user) %> </td>
 		    </tr>
 		  <% end %>
+		</tbody>
 		</table>
 
 	</div>

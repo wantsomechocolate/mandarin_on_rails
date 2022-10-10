@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get '/resources', to: 'static_pages#resources'
   get '/how_it_works', to: 'static_pages#how_it_works'
 
+  get 'tasks/delete_stale_guest_users', to: 'tasks#delete_stale_guest_users'
 
   #Rails.application.routes.draw do
   #  devise_for :users, controllers: {

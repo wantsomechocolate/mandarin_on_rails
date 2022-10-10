@@ -35,6 +35,10 @@ class InputTextsController < ApplicationController
 
 
 	def create
+		#If I don't clear flash messages I set later in this method, they persist for one more page refresh or redirect than I want
+		#If the form submit has errors. Because where there are errors, render is used instead of redirect 
+		flash.clear 
+
 		@input_text = InputText.new(input_text_params)
 		@input_text['user_id'] = current_or_guest_user.id
 		@input_text['title'] = "My Input Text - "+Time.now.utc.to_s
