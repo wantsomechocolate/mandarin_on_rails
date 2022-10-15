@@ -1,3 +1,5 @@
+## THIS IS NOT A MODEL
+
 ## IMPORTS
 require 'set'
 require 'csv'

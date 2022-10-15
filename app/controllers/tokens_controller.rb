@@ -1,3 +1,5 @@
+## Kept for reference
+=begin
 class TokensController < ApplicationController
 
 	## Server side processing for DataTables ajax call

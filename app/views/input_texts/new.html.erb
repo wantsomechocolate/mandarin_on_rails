@@ -8,6 +8,7 @@
 		<% else %>
 			<h1>Welcome!</h1>
 			<h3>Paste or type some simplified chinese text below and then hit the process button to get started</h3>
+			<h4>For example: 我是一个红色的苹果</h4>
 		<% end %>
 
 		<%= render partial: "form", locals: {input_text: @input_text, action: "new"} %>

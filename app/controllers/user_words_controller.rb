@@ -1,11 +1,11 @@
+## Kept for reference
+=begin
 class UserWordsController < ApplicationController
 
   load_and_authorize_resource
 
   def index
-    
     @user_words = current_or_guest_user.user_words
-
   end
 
 
@@ -21,8 +21,7 @@ class UserWordsController < ApplicationController
   def create
   
     @user_word = UserWord.new(user_word_params)
-
-	@user_word['user_id'] = current_or_guest_user.id
+  	@user_word['user_id'] = current_or_guest_user.id
 
     if @user_word.save
       ## this works by looking at the prefixes for the paths
@@ -60,8 +59,5 @@ class UserWordsController < ApplicationController
     def user_word_params
       params.require(:user_word).permit(:word, :known, :definition)
     end
-
-
-
 
 end

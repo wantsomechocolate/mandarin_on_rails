@@ -1,12 +1,6 @@
 # frozen_string_literal: true
-
-#require Rails.root.join('lib','current_or_guest_user')
-
 class Ability
   include CanCan::Ability
-#  include CurrentOrGuestUser
-
-
 
   def initialize(user)
     # Define abilities for the user here. For example:
@@ -35,20 +29,11 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
 
     user = Current.user
-
     can :manage, InputText, user: user
-    
     can :read, InputText, public: true
-
     can :manage, UserWord, user: user
-
     can :manage, KnownWord, user: user
-
-    #can :manage, User #, user: user
-
     can :manage, :all if user.role == "admin"
-
-    #can :manage, Task
 
   end
 end

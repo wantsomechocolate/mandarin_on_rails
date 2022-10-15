@@ -1,4 +1,5 @@
-#tokinizer.rb
+## NOT A MODEL
+
 module Tokenizer
 
 	## TOKINIZATION
@@ -9,7 +10,7 @@ module Tokenizer
 	## then I want to see for each bucket if I keep expanding out, how far can I go in both directions until I only have 1 match
 	## if I do this for every bucket, for many of the words, I'll arrive at the same thing after the expansion, so take a set?
 	## seems very brute. There must be some better way, for now just putting an absurdly high max_length produces the same output
-	## for example, repative song lyrics benefit from this. 
+	## for example, repetative song lyrics benefit from this. 
 
 	## Needs to be passed the text obviously, and the total dictionary (so it can ignore dictionary words)
 	## but could also use some configuration information like the max_token_length, min_token_length, count cutoff

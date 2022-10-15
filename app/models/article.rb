@@ -1,3 +1,5 @@
+## Kept for reference
+
 class Article < ApplicationRecord
 	include Visible
 

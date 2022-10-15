@@ -54,25 +54,28 @@ class KnownWordsController < ApplicationController
 
 
   def create_ajax
-    puts "I WAS CALLED ################################################################################################"
-    puts params
-
-    #if params["controller"]=="known_words"
-      @known_word = KnownWord.new(known_word_params_ajax)
-      #@known_word['user_id'] = params["user_id"]
-    
-      if @known_word.save
-        #flash.notice = @known_word.word+" marked as known"
-        #redirect_back(fallback_location: root_path)
-        render :json => {"staus" => "success"}
-      else
-        #render :new, status: :unprocessable_entity
-        #flash.warning = "There was a problem, the word was not marked"
-        #redirect_back(fallback_location: root_path)
-        render :json => {"staus" => "failure"}
-      end 
-    #end
+    @known_word = KnownWord.new(known_word_params_ajax)
+    if @known_word.save
+      render :json => {"staus" => "success"}
+    else
+      render :json => {"staus" => "failure"}
+    end 
   end
+
+
+  private
+    ## the form and the ajax call were requiring params in two different formats
+    def known_word_params
+      params.require(:known_word).permit(:word)
+      #params.permit(:word)
+    end
+
+    def known_word_params_ajax
+      params.permit(:user_id, :word)
+    end
+
+end
+
 
 =begin    
     @known_word = KnownWord.new(known_word_params_ajax)
@@ -87,19 +90,3 @@ class KnownWordsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end 
 =end
-
-
-
-
-  private
-    def known_word_params
-      params.require(:known_word).permit(:word)
-      #params.permit(:word)
-    end
-
-    def known_word_params_ajax
-      params.permit(:user_id, :word)
-    end
-
-
-end

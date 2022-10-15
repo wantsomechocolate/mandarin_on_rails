@@ -1,12 +1,12 @@
+## THIS IS NOT A MODEL
+
 module Segmentor
 
-
-	## Loop through all starting points
-	## Find the longest word found from each starting point, update right max
-	## Add word to output if word pushes passed right max
-	## If you encounter characters that do not result in a dictionary entry
-	    ## If they push passed right max, Add them to a running list of unknown characters
-	## If you find a stop word or a dictionary word, add current state of unknown to output and blank it
+	## Loop through all characters in the input text
+	## Find the longest word you can find in the dictionary for each starting character.
+	## If the word you find increases your "high-point", add_or_increment it in the output. 
+	## Also captures "unknown words", which are strings of characters that do not result in a dictionary entry
+	## Uses a small set of stop characters
 
 	def longest_matching(text, word_trie = {}, stopwords = {}, config={} )
 
@@ -18,9 +18,7 @@ module Segmentor
 		unknown = ""
 		right_max = 0
 		stopwords_lm = stopwords
-		#puts stopwords_lm.include?("\n")
 
-		## start going through characters 1 by 1
 		while i<text.length
 		    parent_node = trie
 		    cur_string = ""
@@ -28,11 +26,9 @@ module Segmentor
 		    j = 0 #for traversing the tree
 		    cur_char = text[i+j,1]
 
-		    #if the char is a newline (maybe I should have stopwords instead?)
 		    if stopwords_lm.include?(cur_char)
-
 		        # Process Unknown
-		        if unknown.length > 0 #and unknown.split.join(" ")!=""
+		        if unknown.length > 0
 		            add_or_increment(output,unknown,'unknown')
 		            unknown = ""
 		        end
@@ -41,7 +37,6 @@ module Segmentor
 		        ## while the parent node continues to have the next character as a child
 		        while parent_node.children.has_key?(cur_char)
 		            cur_string += cur_char #does not mean you have found a word yet
-
 		            ## If the node for the current character is a word then update longest word to equal the current string
 		            if parent_node.children[cur_char].is_word
 		                longest_word = cur_string
@@ -85,6 +80,5 @@ module Segmentor
 
 		return output
 	end
-
 
 end

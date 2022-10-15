@@ -1,3 +1,5 @@
+## THIS IS NOT A MODEL
+
 #helper_functions.rb
 require 'set'
 

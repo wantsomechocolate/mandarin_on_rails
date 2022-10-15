@@ -1,3 +1,5 @@
+## Kept for reference
+
 class Comment < ApplicationRecord
   include Visible
 
