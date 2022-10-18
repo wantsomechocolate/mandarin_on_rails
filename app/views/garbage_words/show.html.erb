@@ -1,0 +1,43 @@
+<section class="wrapper style1 align-left input-text-show-section">
+	<div class="inner">
+
+		<div>
+			<h1>Garbage Word View</h1>
+		</div>
+		
+	  <div class="input-text-show-container">
+		<div class="input-text-show-title-container">
+			<h2 id = "input-text-title" class = "input-text-show-title"><%= @garbage_word.word %></h2>
+		</div>
+		<br>
+	  </div>
+
+
+
+	  	<div>
+		  	<div>
+		      <%= link_to "Edit", edit_garbage_word_path(@garbage_word), class: "button fit primary" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "Delete", garbage_word_path(@garbage_word), data: {
+		    	turbo_method: :delete,
+		    	turbo_confirm: "Are you sure?"
+		    	}, class: "button fit primary danger" %> 
+			</div>
+
+			<div>
+		      <%= link_to "Add New Word", new_garbage_word_path, class: "button fit" %>
+		  	</div>
+
+		  	<div>
+		      <%= link_to "My Garbage Words", garbage_words_path, class: "button fit" %>
+		  	</div>
+	  	</div>
+
+	</div>
+
+</section> 
+
+
+

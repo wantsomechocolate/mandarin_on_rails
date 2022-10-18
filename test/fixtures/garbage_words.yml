@@ -4,20 +4,8 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-#one: {}
+one: {}
 # column: value
 #
-#two: {}
+two: {}
 # column: value
-
-
-#one:
-#  user_id: one (User)
-#  title: test_input_text
-#  body: 我是一个红色的苹果
-#  public: false
-
-#hsk_2012
-#char_cnt
-#shingle_count
-  

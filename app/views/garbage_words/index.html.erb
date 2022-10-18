@@ -1,0 +1,59 @@
+<section class="wrapper style1 align-left input-text-index-section">
+	<div class="inner">
+
+		<div>
+			<h1>My Garbage Words</h1>
+		</div>
+		
+		<div>
+			<h2>View, Edit, or Create New</h2>
+		</div>
+		<br>
+		<div>
+			<% if @garbage_words.any? %>
+				<table id = "my-garbage-words" class="alt">
+					<thead>
+						<tr>
+							<th> Name </th>
+							<th> Modified </th>
+							<th> View </th>
+							<th> Edit </th>
+						</tr>
+					</thead>
+					<tbody>
+					 
+						<% @garbage_words.each do |garbage_word| %>
+						<tr>
+
+				      		<td>
+				      			<%= garbage_word.word %>
+				      		</td>
+
+				      		<td>
+				      			<%= garbage_word.updated_at %>
+				      		</td>
+
+				      		<td>
+								<%= link_to "", garbage_word_path(garbage_word), class: "button small no-box-shadow icon fas fa-eye" %>
+				      		</td>
+
+				      		<td>
+								<%= link_to "", edit_garbage_word_path(garbage_word), class: "button small no-box-shadow icon fas fa-edit" %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>	
+			<% else %>
+				<p>You don't have any garbage words yet!</p>
+			<% end %>
+		</div>
+		<br>
+		<div>
+			<div>
+				<%= link_to "Add New", new_garbage_word_path, class: "button fit primary" %>
+			</div>
+		</div>
+	</div>
+
+</section>

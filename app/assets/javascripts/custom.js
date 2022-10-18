@@ -34,6 +34,7 @@ $(document).ready(function() {
             { name: 'frequency' },
             { name: 'hsk' },
             { name: 'type' },
+            { name: 'garbage' },
             { name: 'mark'},
         ],
 
@@ -44,6 +45,8 @@ $(document).ready(function() {
             { data: 'freq' },
             { data: 'hsk' },
             { data: 'type' },
+            { data: 'garbage' },
+            { data: 'mark' },
             ],
         */
 
@@ -197,10 +200,18 @@ $(document).ready(function() {
                 targets:[5]
             },
 
+            // Garbage Columns
+            {
+                targets:-2,
+                data:null,
+                defaultContent:'<button class="mark-garbage">X</button>',
+            },
+
+            // Known Column
             {
                 targets:-1,
                 data:null,
-                defaultContent:'<button>X</button>',
+                defaultContent:'<button class="mark-known">X</button>',
             }
 
         ],
@@ -213,7 +224,7 @@ $(document).ready(function() {
 
     // Marking words as known. I also want to be able to just delete shingles from an input text this way as well
     // Maybe this button can actually pop up with some options to choose from. 
-    $('#my-table tbody').on('click', 'button', function () {
+    $('#my-table tbody').on('click', 'button.mark-known', function () {
         var word = table.row($(this).parents('tr')).data()[0];
         var user_id = $(this).parents('table').attr("user_id");
         var row = $(this).parents('tr')        
@@ -228,6 +239,26 @@ $(document).ready(function() {
           }
         });
     });
+
+
+
+    // For marking words as garbage
+    $('#my-table tbody').on('click', 'button.mark-garbage', function () {
+        var word = table.row($(this).parents('tr')).data()[0];
+        var user_id = $(this).parents('table').attr("user_id");
+        var row = $(this).parents('tr')        
+        $.ajax({
+          url: '/garbage_word_create_ajax',
+          type: 'POST',
+          data: {"word":word, "user_id":user_id},
+          success: function(res) {
+            console.log(res)
+            console.log('Load was performed.');
+            row.css({"display":"none"})
+          }
+        });
+    });
+
 
     // Default options for simpler tables
     var default_language = {
@@ -254,6 +285,12 @@ $(document).ready(function() {
         scrollX: true,
         order: [[1,'desc']],
     })
+
+     $('#my-garbage-words').DataTable({
+        language: default_language,
+        scrollX: true,
+        order: [[1,'desc']],
+    })   
 
     $('#users-table').DataTable({
         language: default_language,

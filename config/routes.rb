@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :shingles
   end
   resources :known_words
+  resources :garbage_words
 
   ## Routes to static pages
   get '/how_to_use', to: 'static_pages#how_to_use'
@@ -24,5 +25,6 @@ Rails.application.routes.draw do
   ## Other
   get 'tasks/delete_stale_guest_users', to: 'tasks#delete_stale_guest_users'
   post "/known_word_create_ajax", to: "known_words#create_ajax"
+  post "/garbage_word_create_ajax", to: "garbage_words#create_ajax"
 
 end

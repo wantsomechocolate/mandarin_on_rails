@@ -33,6 +33,7 @@ class Ability
     can :read, InputText, public: true
     can :manage, UserWord, user: user
     can :manage, KnownWord, user: user
+    can :manage, GarbageWord, user: user    
     can :manage, :all if user.role == "admin"
 
   end
