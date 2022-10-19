@@ -33,9 +33,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: mandarin_on_rails_test
-  username: wantsomechocolate
-  password: wantsomechocolate
+  database: postgres_test
+  username: wantsomechocolate_test
+  password: wantsomechocolate_test
   host: /var/run/postgresql
   port: 5433
 
