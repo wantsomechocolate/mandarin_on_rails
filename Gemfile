@@ -70,9 +70,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'rexml', '~> 3.2.5'
-  gem 'minitest', group: :test
-  gem 'minitest-reporters', group: :test
+  #gem 'rexml', '~> 3.2.5'
+  #gem 'minitest', group: :test
+  #gem 'minitest-reporters', group: :test
 end
 
 
