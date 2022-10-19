@@ -1,5 +1,3 @@
-## Kept for reference
-=begin
 ## Controller instance variables e.g. @var can, can be accessed by the view!
 class ArticlesController < ApplicationController
 
@@ -12,6 +10,7 @@ class ArticlesController < ApplicationController
   def index
     @test = current_or_guest_user
     @articles = Article.all
+
   end
 
 
