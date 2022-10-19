@@ -1,7 +1,5 @@
 module ApplicationHelper
 
-	## Style flash messages
-
 	def flash_class(level)
 	  bootstrap_alert_class = {
 	    "success" => "alert-success",
