@@ -54,17 +54,44 @@ class KnownWordsController < ApplicationController
 
 
   def create_ajax
+
+
+
+
     @known_word = KnownWord.new(known_word_params_ajax)
+
+
     if @known_word.save
+
+
       render :json => {"staus" => "success"}
     else
+
+
+
       render :json => {"staus" => "failure"}
     end 
+
   end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ## the form and the ajax call were requiring params in two different formats
   private
-    ## the form and the ajax call were requiring params in two different formats
     def known_word_params
       params.require(:known_word).permit(:word)
       #params.permit(:word)
@@ -73,6 +100,7 @@ class KnownWordsController < ApplicationController
     def known_word_params_ajax
       params.permit(:user_id, :word)
     end
+
 
 end
 

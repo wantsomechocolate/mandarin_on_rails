@@ -28,12 +28,9 @@ class InputTextsController < ApplicationController
 	def show
 		known_words = current_or_guest_user.known_words.pluck(:word)
 		@input_text = InputText.find(params[:id])
-
 		## Query for shingles that are part of the text, but that are not marked as known
-		@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val AND known_words.user_id = "+current_or_guest_user.id.to_s).where('known_words.id' => nil)
-
-		#@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val AND known_words.user_id = "+current_or_guest_user.id.to_s).joins("LEFT JOIN garbage_words ON garbage_words.word = shingles.val AND garbage_words.user_id = "+current_or_guest_user.id.to_s).where('known_words.id' => nil).where('garbage_words.id' => nil)
-
+		#@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val AND known_words.user_id = "+current_or_guest_user.id.to_s).where('known_words.id' => nil)
+		@shingles = @input_text.shingles.joins("LEFT JOIN known_words ON known_words.word = shingles.val AND known_words.user_id = "+current_or_guest_user.id.to_s).joins("LEFT JOIN garbage_words ON garbage_words.word = shingles.val AND garbage_words.user_id = "+current_or_guest_user.id.to_s).where('known_words.id' => nil).where('garbage_words.id' => nil)
 	end
 
 
