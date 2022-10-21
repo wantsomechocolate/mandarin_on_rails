@@ -11,7 +11,7 @@ $(document).ready(function() {
         dom: 'RPlfrtipB',
         searchPane:true,
         searchPanes:{
-			cascadePanes: true,
+            cascadePanes: true,
 
             dtOpts: {
                 select: {
@@ -34,6 +34,7 @@ $(document).ready(function() {
             { name: 'frequency' },
             { name: 'hsk' },
             { name: 'type' },
+            { name: 'garbage' },
             { name: 'mark'},
         ],
 
@@ -44,6 +45,8 @@ $(document).ready(function() {
             { data: 'freq' },
             { data: 'hsk' },
             { data: 'type' },
+            { data: 'garbage' },
+            { data: 'mark' },
             ],
         */
 
@@ -53,16 +56,16 @@ $(document).ready(function() {
         // scrollX: true,
         // stateSave: true,        
 
-	    language: {
-	        search: "_INPUT_",
-	        searchPlaceholder: "Search...",
-	        lengthMenu:'<select>'+
-		      '<option value="10">10</option>'+
-		      '<option value="20">20</option>'+
-		      '<option value="50">50</option>'+
-		      '<option value="100">100</option>'+
-		      '</select>'
-	    },
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search...",
+            lengthMenu:'<select>'+
+              '<option value="10">10</option>'+
+              '<option value="20">20</option>'+
+              '<option value="50">50</option>'+
+              '<option value="100">100</option>'+
+              '</select>'
+        },
 
         // Configure the export buttons
         buttons: [
@@ -119,10 +122,10 @@ $(document).ready(function() {
 
         columnDefs:[
 
-        	// Count Column
+            // Count Column
             {
                 searchPanes:{
-                	initCollapsed: true,
+                    initCollapsed: true,
                 },
                 targets:[2]
             },
@@ -130,77 +133,85 @@ $(document).ready(function() {
             //Frequency Column
             {
                 searchPanes:{
-                	threshold:1,
-                	show:true,
-                	initCollapsed:true,
+                    threshold:1,
+                    show:true,
+                    initCollapsed:true,
                     options:[
 
-                        { 	label:'20+',
+                        {   label:'20+',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>20; 					}	},
-                        {	label:'19-20',
+                                return rowData[3]>20;                   }   },
+                        {   label:'19-20',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=19 && rowData[3]<20;	}	},
-                        {	label:'18-19',
+                                return rowData[3]>=19 && rowData[3]<20; }   },
+                        {   label:'18-19',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=18 && rowData[3]<19;	}	},
-                        {	label:'17-18',
+                                return rowData[3]>=18 && rowData[3]<19; }   },
+                        {   label:'17-18',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=17 && rowData[3]<18;	}	},
-                        {	label:'16-17',
+                                return rowData[3]>=17 && rowData[3]<18; }   },
+                        {   label:'16-17',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=16 && rowData[3]<17;	}	},
-                        {	label:'15-16',
+                                return rowData[3]>=16 && rowData[3]<17; }   },
+                        {   label:'15-16',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=15 && rowData[3]<16;	}	},
-                        {	label:'14-15',
+                                return rowData[3]>=15 && rowData[3]<16; }   },
+                        {   label:'14-15',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=14 && rowData[3]<15;	}	},
-                        {	label:'13-14',
+                                return rowData[3]>=14 && rowData[3]<15; }   },
+                        {   label:'13-14',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=13 && rowData[3]<14;	}	},
-                        {	label:'12-13',
+                                return rowData[3]>=13 && rowData[3]<14; }   },
+                        {   label:'12-13',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=12 && rowData[3]<13;	}	},
-                        {	label:'11-12',
+                                return rowData[3]>=12 && rowData[3]<13; }   },
+                        {   label:'11-12',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=11 && rowData[3]<12;	}	},
-                        {	label:'10-11',
+                                return rowData[3]>=11 && rowData[3]<12; }   },
+                        {   label:'10-11',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=10 && rowData[3]<11;	}	},
-                        {	label:'10-',
+                                return rowData[3]>=10 && rowData[3]<11; }   },
+                        {   label:'10-',
                             value: function(rowData,rowIdx){
-                                return rowData[3]>=0 && rowData[3]<10;	}	},
-                        {	label:'No Data',
+                                return rowData[3]>=0 && rowData[3]<10;  }   },
+                        {   label:'No Data',
                             value: function(rowData,rowIdx){
-                                return rowData[3]<0;					}	},                                
+                                return rowData[3]<0;                    }   },                                
                     ]                    
                 },
                 targets:[3]
             },
 
-        	// HSK Column
+            // HSK Column
             {
                 searchPanes:{
-                	initCollapsed: true,
-                	// preSelect: ["-1","4","5","6"], // This isn't working :/
+                    initCollapsed: true,
+                    // preSelect: ["-1","4","5","6"], // This isn't working :/
                 },
                 targets:[4]
             },
 
-        	// Type Column
+            // Type Column
             {
                 searchPanes:{
-                	initCollapsed: true,
-                	// preSelect: ["dictionary"] this isn't working :/
+                    initCollapsed: true,
+                    // preSelect: ["dictionary"] this isn't working :/
                 },
                 targets:[5]
             },
 
+            // Garbage Columns
+            {
+                targets:-2,
+                data:null,
+                defaultContent:'<button class="mark-garbage">X</button>',
+            },
+
+            // Known Column
             {
                 targets:-1,
                 data:null,
-                defaultContent:'<button>X</button>',
+                defaultContent:'<button class="mark-known">X</button>',
             }
 
         ],
@@ -213,7 +224,7 @@ $(document).ready(function() {
 
     // Marking words as known. I also want to be able to just delete shingles from an input text this way as well
     // Maybe this button can actually pop up with some options to choose from. 
-    $('#my-table tbody').on('click', 'button', function () {
+    $('#my-table tbody').on('click', 'button.mark-known', function () {
         var word = table.row($(this).parents('tr')).data()[0];
         var user_id = $(this).parents('table').attr("user_id");
         var row = $(this).parents('tr')        
@@ -229,6 +240,26 @@ $(document).ready(function() {
         });
     });
 
+
+
+    // For marking words as garbage
+    $('#my-table tbody').on('click', 'button.mark-garbage', function () {
+        var word = table.row($(this).parents('tr')).data()[0];
+        var user_id = $(this).parents('table').attr("user_id");
+        var row = $(this).parents('tr')        
+        $.ajax({
+          url: '/garbage_word_create_ajax',
+          type: 'POST',
+          data: {"word":word, "user_id":user_id},
+          success: function(res) {
+            console.log(res)
+            console.log('Load was performed.');
+            row.css({"display":"none"})
+          }
+        });
+    });
+
+
     // Default options for simpler tables
     var default_language = {
             search: "_INPUT_",
@@ -242,11 +273,11 @@ $(document).ready(function() {
         }
 
     // Simpler tables
-	$('#my-input-texts').DataTable({
-		language: default_language,
-		scrollX: true,
+    $('#my-input-texts').DataTable({
+        language: default_language,
+        scrollX: true,
         order: [[2,'desc']],
-	})
+    })
 
 
     $('#my-known-words').DataTable({
@@ -254,6 +285,12 @@ $(document).ready(function() {
         scrollX: true,
         order: [[1,'desc']],
     })
+
+     $('#my-garbage-words').DataTable({
+        language: default_language,
+        scrollX: true,
+        order: [[1,'desc']],
+    })   
 
     $('#users-table').DataTable({
         language: default_language,
