@@ -18,6 +18,7 @@ module HelperFunctions
                     '十'=>{'shingle_type'=>'community','def' => 'ten'},
                     '多'=>{'shingle_type'=>'community','def' => 'a lot, how much, that much', 'hsk_2012'=>45563013},
                     '点'=>{'shingle_type'=>'community','def' => 'spot, point'},
+                    '一点点'=>{'shingle_type'=>'community','def' => 'a little bit'},
 
                 }
 
