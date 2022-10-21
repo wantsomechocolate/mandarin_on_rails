@@ -63,6 +63,13 @@ class ApplicationController < ActionController::Base
       known_word.save()
     end
 
+    ## Transfer garbage words
+    guest_garbage_words = guest_user.garbage_words.all
+    guest_garbage_words.each do |garbage_word|
+      garbage_word.user_id = current_user.id
+      garbage_word.save()
+    end
+
 
   end
 
