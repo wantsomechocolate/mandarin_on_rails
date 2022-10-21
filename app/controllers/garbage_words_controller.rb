@@ -55,7 +55,7 @@ class GarbageWordsController < ApplicationController
 
   def create_ajax
     @garbage_word = GarbageWord.new(garbage_word_params_ajax)
-    puts "Creating garbage word: "+ garbage_word.word
+    #puts "Creating garbage word: "+ @garbage_word.word
     if @garbage_word.save
       render :json => {"staus" => "success"}
     else
