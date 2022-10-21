@@ -41,7 +41,7 @@ module HelperFunctions
         ## I'm going to experiment with adding the functionality to conver to lower case, and remove
         ## all white space except single space including \n\t
         ## Also, if the thing you are trying to add is only whitespace, then don't add anything. 
-        text = text.split.join(" ").downcase
+        text = text.split.join(" ").downcase.strip
 
         if text != ""
             if output.has_key?(text)
