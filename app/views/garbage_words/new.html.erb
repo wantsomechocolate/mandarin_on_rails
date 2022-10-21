@@ -1,0 +1,22 @@
+<section class = "wrapper style1 align-left input-text-new-section input-text-edit-section">
+
+  <div class = "inner">
+  
+    
+    <% if current_or_guest_user.garbage_words.any? %>
+      <h1>New Garbage Word</h1>
+      <h3>Add a word</h3>
+    <% else %>
+      <h1>Welcome!</h1>
+      <h3>Add a word</h3>
+    <% end %>
+
+    <%= render partial: "form", locals: {garbage_word: @garbage_word, action: "new"} %>
+
+    <% if current_or_guest_user.garbage_words.any? %>
+      <%= link_to "My Garbage Words", garbage_words_path, class: "button fit" %>
+    <% end %>
+
+  </div>
+
+</section>

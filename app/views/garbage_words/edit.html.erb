@@ -1,0 +1,17 @@
+<section class="wrapper style1 align-left input-text-edit-section">
+  <div class="inner">
+
+    <h1> Edit Garbage Word</h1>
+
+    <div>
+    <%= render partial: "form", locals: {garbage_word: @garbage_word, action: "edit"} %>
+    </div>
+    <div>
+    <%= link_to "View", garbage_word_path(@garbage_word), class: "button fit" %>
+    </div>
+    <div>
+    <%= link_to "My Words", garbage_words_path, class: "button fit" %>
+    </div>
+  </div>
+
+</section>
