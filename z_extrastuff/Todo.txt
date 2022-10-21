@@ -20,3 +20,10 @@
 
 Watch this video to get flash messages working
 https://www.youtube.com/watch?v=yZDTBItc3ZM&t=316s&ab_channel=GoRails
+
+
+
+
+My garbage and known words are being saved without trailing whitespace, but my shingles are stored that way
+So somewhere along the line, the white space is being removed between the javascript->ajax->db
+I think the best course of action is to make it so that all shingles have white space remoted anyway. 
